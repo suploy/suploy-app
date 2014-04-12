@@ -1,0 +1,29 @@
+#mainProfileWrapper ng-controller='SshKeyCtrl'
+  .panel.panel-default
+    .panel-heading
+      .panel-title
+        | SSH-Key
+        button.btn.btn-primary.pull-right ng-click='toggleNewSshKeyForm()'
+          i.fa.fa-add
+          | Add SSH Key
+    .panel-body
+      table.table.table-striped
+        thead
+          th Title
+          th Fingerprint
+          th
+        tbody
+          tr ng-repeat='ssh_key in ssh_keys'
+            td
+              | {{ ssh_key.title }}
+            td
+              | {{ ssh_key.fingerprint }}
+            td
+              button.btn.btn-danger.pull-right type='button' ng-click='deleteSshKey($index)' Delete
+      form.form-left ng-submit='createSshKey()' ng-show='showNewSshKeyForm'
+        .form-group
+          input#ssh_key_title.form-control type='text' placeholder="Title" ng-model='title'
+        .form-group
+          textarea#ssh_key_content.form-control placeholder="Public key content" rows='6' cols='50' ng-model='content'
+        .form-group
+          button.btn.btn-success.form-control type='submit' CREATE SSH KEY

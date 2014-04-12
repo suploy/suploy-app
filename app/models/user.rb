@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   scope :with_role, lambda{ |role| joins(:roles).where(:roles => {:internal_name => role.to_s}) }
 
   has_and_belongs_to_many :roles
+  
+  has_many :ssh_keys
 
   def has_role?(role)
     roles.include? Role.find_by_internal_name(role.to_s)

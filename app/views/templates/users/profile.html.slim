@@ -6,6 +6,8 @@
           ul.nav.nav-pills.nav-stacked
             li ng-class='{active: mainActive}'
               a href='' ng-click='includeMainProfile()' Profile
+            li ng-class='{active: sshKeysActive}'
+              a href='' ng-click='includeSshKeys()' SSH-Keys
             li.danger
               a href='' data-toggle='modal' data-target='#deleteModal' Delete Account
     .col-md-9

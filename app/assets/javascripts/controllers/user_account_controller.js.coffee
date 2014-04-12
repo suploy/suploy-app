@@ -13,7 +13,13 @@
         $location.path('/users/sign_in')
     $scope.includeMainProfile = ->
       $scope.template_url = '/templates/users/profile/main.html'
+      $scope.sshKeysActive = false
       $scope.mainActive = true
+    $scope.includeSshKeys = ->
+      $scope.template_url = '/templates/users/profile/ssh_keys.html'
+      $scope.mainActive = false
+      $scope.sshKeysActive = true
     $scope.template_url = '/templates/users/profile/main.html'
+    $scope.sshKeysActive = false
     $scope.mainActive = true
 ]

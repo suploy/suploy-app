@@ -53,5 +53,9 @@
       url: "/admin/users/:id/edit"
       templateUrl: "/templates/admin/users/edit.html"
       controller: "EditUsersCtrl"
+    ).state("applications",
+      url: "/apps"
+      templateUrl: "/templates/apps/list.html"
+      controller: "ListAppsCtrl"
     )
 ]
