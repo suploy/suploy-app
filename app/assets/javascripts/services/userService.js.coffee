@@ -7,7 +7,7 @@
         promise = $http.post('/api/users/sign_in', {user: login})
         promise.success (data, status, headers, config) ->
           wrappedService.setUserData(data.id, data.email, data.roles, true)
-          $location.path('/secret')
+          $location.path('/')
         return promise
 
       signout: ->
@@ -74,6 +74,5 @@
       roles: null
       signedIn: false
 
-    wrappedService.getUserData()
     wrappedService
 ]

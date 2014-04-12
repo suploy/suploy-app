@@ -1,7 +1,9 @@
 @baseApp = angular.module("baseApp", [
   "ngCookies"
   "ngAnimate"
+  "ngTable"
   "ui.router"
+  "chieffancypants.loadingBar"
   "baseControllers"
 ])
 
@@ -10,7 +12,9 @@
 @baseApp.run [
   "$templateCache"
   "$http"
-  ($templateCache, $http) ->
+  "userService"
+  ($templateCache, $http, userService) ->
+    userService.getUserData()
     $http.get "/templates/users/sign_in.html",
       cache: $templateCache
 

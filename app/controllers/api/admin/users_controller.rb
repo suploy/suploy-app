@@ -4,9 +4,7 @@ class Api::Admin::UsersController < Api::Admin::BaseController
   # GET /api/admin/users.json
   def index
     authorize! :index, User
-    page = 1
-    page = params[:page]
-    @users = User.page(page)
+    @users = User.all
     render json: {meta:{total: User.all.count}, users: serialized_users(@users)}
   end
 

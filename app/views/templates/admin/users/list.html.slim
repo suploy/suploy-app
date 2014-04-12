@@ -4,7 +4,7 @@
       .panel.panel-default
         .panel-heading Manage users
         .panel-body
-          table.table.table-striped
+          table.table.table-striped.ng-table-responsive ng-table='usersTable'
             thead
               th ID
               th E-Mail
@@ -14,17 +14,17 @@
               th
               th
             tbody
-              tr ng-repeat='user in users'
-                td
+              tr ng-repeat='user in $data'
+                td data-title="'ID'"
                   | {{ user.id }}
-                td
+                td data-title="'E-Mail'"
                   a href='#/admin/users/{{user.id}}'
                     | {{ user.email }}
-                td
+                td data-title="'Created'"
                   | {{ user.created_at | date: 'medium' }}
-                td
+                td data-title="'Last Login'"
                   | {{ (user.last_sign_in_at | date: 'medium') || "Never" }}
-                td.text-center
+                td.text-center data-title="'Failed attempts'"
                   | {{ user.failed_attempts }}
                 td
                   a href='#/admin/users/{{user.id}}/edit'

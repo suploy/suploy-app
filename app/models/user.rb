@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   
   has_many :ssh_keys
+  has_many :apps
 
   def has_role?(role)
     roles.include? Role.find_by_internal_name(role.to_s)

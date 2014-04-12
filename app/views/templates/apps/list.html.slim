@@ -2,38 +2,30 @@
   .row
     .col-md-12
       .panel.panel-default
-        .panel-heading Manage Apps
+        .panel-heading
+          .panel-title
+            | Manage Apps
+            a.btn.btn-primary.pull-right href='#/apps/new'
+              | Create App
         .panel-body
-          table.table.table-striped.ng-table-responsive ng-table='appsTable'
+          table.table.table-striped
             thead
               th Name
               th Status
               th
               th
             tbody
-              tr ng-repeat='app in $data'
-                td data-title="'Name'"
-                  a href='#/apps/{{app.id}}'
+              tr ng-repeat='app in apps'
+                td
                     | {{ app.name }}
-                td data-title="'Status'"
-                  a
+                td
                     | {{ app.status }}
                 td
-                  a href='#/admin/users/{{user.id}}/edit'
+                  a href='#/apps/{{app.id}}/edit'
                     i.glyphicon.glyphicon-edit
                 td
-                  a href='' data-toggle='modal' data-target='#deleteModal' ng-click="setCurrentUserId(user.id)"
+                  a href='' data-toggle='modal' data-target='#deleteModal' ng-click="setCurrentAppId(app.id)"
                     i.glyphicon.glyphicon-remove.text-danger
-          ul.pagination style='display:table; margin: 0 auto;'
-            li.disabled
-              a ng-class='{disabled: current_page==1}'
-                | &laquo;
-            li ng-repeat='page in pages' ng-class='{active: page==current_page}'
-              a href='' ng-click='loadPage(page)'
-                | {{ page }}
-            li ng-class='{disabled: current_page==pages_count}'
-              a
-                | &raquo;
 
 #deleteModal.modal.fade tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel' aria-hidden='true'
   form.modal-dialog ng-submit='deleteApp()'

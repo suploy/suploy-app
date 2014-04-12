@@ -33,10 +33,6 @@
       url: "/"
       templateUrl: "/templates/index.html"
       controller: "HomeCtrl"
-    ).state("secret",
-      url: "/secret"
-      templateUrl: "/templates/secret.html"
-      controller: "SecretCtrl"
     ).state("dashboard",
       url: "/admin"
       templateUrl: "/templates/admin/dashboard.html"
@@ -53,9 +49,17 @@
       url: "/admin/users/:id/edit"
       templateUrl: "/templates/admin/users/edit.html"
       controller: "EditUsersCtrl"
-    ).state("applications",
+    ).state("list_applications",
       url: "/apps"
       templateUrl: "/templates/apps/list.html"
       controller: "ListAppsCtrl"
+    ).state("create_application",
+      url: "/apps/new"
+      templateUrl: "/templates/apps/new.html"
+      controller: "NewAppCtrl"
+    ).state("update_application",
+      url: "/apps/:id/edit"
+      templateUrl: "/templates/apps/edit.html"
+      controller: "UpdateAppCtrl"
     )
 ]

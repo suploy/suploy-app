@@ -12,6 +12,7 @@
  *= require font-awesome
  *= require_tree .
  *= require ng-table
+ *= require angular-loading-bar
  */
 @import "bootstrap";
 
@@ -86,5 +87,10 @@ ul.nav.nav-pills.nav-stacked li.danger a:focus {
 }
 
 .panel-title button.pull-right {
+  margin-top: -5px;
+}
+
+.panel-heading a.pull-right {
+  color: white !important;
   margin-top: -5px;
 }

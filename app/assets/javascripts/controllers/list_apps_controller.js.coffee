@@ -2,16 +2,20 @@
   "$scope"
   "$http"
   "$location"
-  ($scope, $http, $location) ->
+  "ngTableParams"
+  ($scope, $http, $location, ngTableParams) ->
     promise = $http.get '/api/apps'
     promise.success (data, status, headers, config) ->
-      $scope.appsTable = new ngTableParams(
-        page: 1
-        count: 10
-      ,
-        total: data.meta.total
-        getData: ($defer, params) ->
-          $defer.resolve data.slice((params.page() - 1) * params.count(), params.page() * params.count())
-          return
-      )
+      $scope.apps = data.apps
+
+    $scope.setCurrentAppId = (currentAppId) ->
+      $scope.currentAppId = currentAppId
+
+    $scope.deleteApp = ->
+      $('#deleteModal').modal('hide')
+      for app, i in $scope.apps
+        if app.id == $scope.currentAppId
+          $scope.apps.splice i, 1
+          break
+      $http.delete "/api/apps/#{$scope.currentAppId}"
 ]
