@@ -1,0 +1,32 @@
+development:
+  adapter: postgresql
+  template: template0
+  encoding: utf8
+  collation: en_US.UTF8
+  ctype: en_US.UTF8
+  database: base_app_development
+  host: localhost
+  pool: 5
+  username: base_app
+  password: password1
+
+test:
+  adapter: postgresql
+  template: template0
+  encoding: utf8
+  collation: en_US.UTF8
+  ctype: en_US.UTF8
+  database: base_app_test
+  host: localhost
+  pool: 5
+  username: base_app
+  password: password1
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: base_app_production
+  host: localhost
+  pool: 5
+  username: base_app
+  password: password1

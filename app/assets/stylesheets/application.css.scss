@@ -1,0 +1,86 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require font-awesome
+ *= require_tree .
+ *= require ng-table
+ */
+@import "bootstrap";
+
+body {
+	padding-top: 50px;
+}
+
+td {
+	vertical-align: middle !important;
+}
+
+.ng-scope.body .container {
+  margin-top: 20px;
+}
+
+.container > .alert {
+  margin-bottom: 0 !important;
+}
+
+.unauth-user-panel .input-group {
+	margin-top: 10px;
+}
+
+.no_margin {
+	margin: 0 !important;
+}
+
+.text-85 {
+	font-size: 85%;
+}
+
+.valign {
+	vertical-align: middle;
+}
+
+.forgot-password {
+	margin-top: 3px;
+}
+
+form .alert {
+  margin-bottom: 0px !important;
+}
+
+.panel-danger .panel-body ul {
+  margin-bottom: 0 !important;
+}
+
+ul.nav.nav-pills.nav-stacked li.danger a,
+ul.nav.nav-pills.nav-stacked li.danger a:hover,
+ul.nav.nav-pills.nav-stacked li.danger a:focus {
+  background-color: #F2DEDE;
+  color: #A94442;
+}
+
+.form-left {
+  max-width: 550px;
+  width: 100%;
+}
+
+#alerts-container > .container:first-child {
+  margin-top: 20px
+}
+
+.animate-enter {
+  -webkit-transition: 1s linear all; /* Chrome */
+  transition: 1s linear all;
+  opacity: 0;
+}
+
+.animate-enter.animate-enter-active {
+  opacity: 1;
+}

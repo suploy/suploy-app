@@ -1,0 +1,54 @@
+doctype html
+html ng-app='baseApp'
+  head
+    title BaseApp
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  body
+
+    nav.navbar.navbar-default.navbar-fixed-top role='navigation' ng-controller='LoginCtrl'
+      .container
+        .navbar-header
+          button type='button' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1' class='navbar-toggle'
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a href='#/' class='navbar-brand' BaseApp
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a href='#/' Home
+            li
+              a href='#/secret' ng-show='userService.signedIn' Secret
+          ul.nav.navbar-nav.navbar-right
+            li ng-show='isAdmin()'
+              a href='#/admin'
+                | Admin
+            li ng-show='userService.signedIn'
+              a href='#/users/profile'
+                | {{ userService.email }}
+            li ng-show='userService.signedIn'
+              a href='#/users/sign_in' ng-click='signout()' Sign out
+            li ng-hide='userService.signedIn'
+              a href='#/users/sign_in' Sign in
+
+    #alerts-container ng-controller='AlertsCtrl'
+      .container ng-show="alerts.errors.length > 0"
+        .alert.alert-danger ng-repeat="error in alerts.errors"
+          button.close type='button' data-dismiss='alert' aria-hidden='true' ng-click='alerts.dismissError($index)' &times;
+          span
+            | {{ error }}
+      .container ng-show="alerts.warnings.length > 0"
+        .alert.alert-warning ng-repeat="warning in alerts.warnings"
+          button.close type='button' data-dismiss='alert' aria-hidden='true' ng-click='alerts.dismissWarning($index)' &times;
+          span
+            | {{ warning }}
+      .container ng-show="alerts.infos.length > 0"
+        .alert.alert-info ng-repeat="info in alerts.infos"
+          button.close type='button' data-dismiss='alert' aria-hidden='true' ng-click='alerts.dismissInfo($index)' &times;
+          span
+            | {{ info }}
+
+    .body ui-view=''
