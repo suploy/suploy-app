@@ -10,6 +10,9 @@
       promise = $http.post('/api/users/ssh_keys', {'ssh_key':{'title':$scope.title,'content':$scope.content}})
       promise.success (data, status, headers, config) ->
         $scope.ssh_keys.push data
+        $scope.toggleNewSshKeyForm()
+        $scope.title = ""
+        $scope.content = ""
       promise.error (data, status, headers, config) ->
         $scope.all_errors = data.errors
     $scope.deleteSshKey = (index) ->
