@@ -231,6 +231,7 @@ GEM
     sqlite3 (1.3.9)
     sqlite3-ruby (1.3.3)
       sqlite3 (>= 1.3.3)
+    sshkey (1.6.1)
     temple (0.6.7)
     term-ansicolor (1.3.0)
       tins (~> 1.0)
@@ -299,6 +300,7 @@ DEPENDENCIES
   settingslogic
   slim-rails
   sqlite3
+  sshkey
   therubyracer
   uglifier (>= 1.3.0)
   unicorn
