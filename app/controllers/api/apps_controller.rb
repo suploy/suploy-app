@@ -15,6 +15,7 @@ class Api::AppsController < Api::BaseController
   # POST /apps
   def create
     @app = App.new(app_params)
+    @app.user = current_user
 
     respond_to do |format|
       if @app.save

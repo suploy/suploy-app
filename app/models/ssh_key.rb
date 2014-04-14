@@ -1,11 +1,30 @@
+
 class SshKey < ActiveRecord::Base
   validate :validate_key
   validates_presence_of :title
   validates_presence_of :content
 
+  after_create :delegate_create_to_backend
+  after_destroy :delegate_destroy_to_backend
   before_save :set_fingerprint
 
   belongs_to :user
+
+  def delegate_create_to_backend
+    require './lib/suploy-scli/lib/scli'
+    scli = Scli.new([], Kernel)
+    scli.git_repo_url = './../gitolite-admin'
+    scli.keydir = scli.git_repo_url + '/keydir'
+    scli.add_ssh_key(self.user.name, self.title, self.content)
+  end
+
+  def delegate_destroy_to_backend
+    require './lib/suploy-scli/lib/scli'
+    scli = Scli.new([], Kernel)
+    scli.git_repo_url = './../gitolite-admin'
+    scli.keydir = scli.git_repo_url + '/keydir'
+    scli.remove_ssh_key(self.user.name, self.title)
+  end
 
   def set_fingerprint
     self.fingerprint = SSHKey.fingerprint self.content

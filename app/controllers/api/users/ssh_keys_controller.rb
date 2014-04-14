@@ -15,6 +15,7 @@ class Api::Users::SshKeysController < Api::BaseController
   # POST /ssh_keys
   def create
     @ssh_key = SshKey.new(ssh_key_params)
+    @ssh_key.user = current_user
 
     respond_to do |format|
       if @ssh_key.save
