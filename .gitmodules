@@ -1,0 +1,3 @@
+[submodule "lib/suploy-scli"]
+	path = lib/suploy-scli
+	url = git@github.com:suploy/suploy-scli.git

@@ -3,7 +3,7 @@ class Api::AppsController < Api::BaseController
 
   # GET /apps
   def index
-    @apps = App.all
+    @apps = current_user.apps
     render json: {apps: @apps, meta: {total:App.all.count}}
   end
 
