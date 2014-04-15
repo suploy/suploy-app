@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe SshKeysController do
+describe Api::Users::SshKeysController do
   describe "routing" do
 
     it "routes to #index" do

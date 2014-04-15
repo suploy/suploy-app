@@ -18,7 +18,7 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe AppsController do
+describe Api::AppsController do
 
   # This should return the minimal set of attributes required to create a valid
   # App. As you add validations to App, be sure to
