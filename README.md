@@ -1,7 +1,6 @@
 Installation
 ------------
 
-
 ### Git
 
 	sudo apt-get install git-core
@@ -48,6 +47,8 @@ vim /home/git/.gitolite/hooks/common/post-receive
 	git clone git@localhost:gitolite-admin
 	git clone https://github.com/suploy/suploy-app.git /home/vagrant/suploy
 	cd /home/vagrant/suploy
+	git submodule init
+	git submodule update
 	sudo apt-get -y -q install gawk libgdbm-dev pkg-config libffi-dev build-essential openssl libreadline6 libreadline6-dev curl git zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev autoconf libc6-dev libncurses5-dev automake libtool bison subversion python postgresql postgresql-contrib libpq-dev redis-server python-software-properties
 	curl -L https://get.rvm.io | bash -s stable
 	source "/home/vagrant/.rvm/scripts/rvm"
