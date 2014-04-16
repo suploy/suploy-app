@@ -10,7 +10,6 @@ class App < ActiveRecord::Base
     scli.git_repo_url = './../gitolite-admin'
     scli.conffile = scli.git_repo_url + '/conf/gitolite.conf'
     scli.add_repository(self.user.name, self.name)
-    scli.push_git_repo
   end
 
   def delegate_destroy_to_backend
@@ -19,6 +18,5 @@ class App < ActiveRecord::Base
     scli.git_repo_url = './../gitolite-admin'
     scli.conffile = scli.git_repo_url + '/conf/gitolite.conf'
     scli.remove_repository(self.name)
-    scli.push_git_repo
   end
 end
