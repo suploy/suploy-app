@@ -12,18 +12,12 @@ class SshKey < ActiveRecord::Base
 
   def delegate_create_to_backend
     require './lib/suploy-scli/lib/scli'
-    scli = Scli.new([], Kernel)
-    scli.git_repo_url = './../gitolite-admin'
-    scli.keydir = scli.git_repo_url + '/keydir'
-    scli.add_ssh_key(self.user.name, self.title, self.content)
+    $scli.add_ssh_key(self.user.name, self.title, self.content)
   end
 
   def delegate_destroy_to_backend
     require './lib/suploy-scli/lib/scli'
-    scli = Scli.new([], Kernel)
-    scli.git_repo_url = './../gitolite-admin'
-    scli.keydir = scli.git_repo_url + '/keydir'
-    scli.remove_ssh_key(self.user.name, self.title)
+    $scli.remove_ssh_key(self.user.name, self.title)
   end
 
   def set_fingerprint

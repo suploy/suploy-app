@@ -6,17 +6,11 @@ class App < ActiveRecord::Base
 
   def delegate_create_to_backend
     require './lib/suploy-scli/lib/scli'
-    scli = Scli.new([], Kernel)
-    scli.git_repo_url = './../gitolite-admin'
-    scli.conffile = scli.git_repo_url + '/conf/gitolite.conf'
-    scli.add_repository(self.user.name, self.name)
+    $scli.add_repository(self.user.name, self.name)
   end
 
   def delegate_destroy_to_backend
     require './lib/suploy-scli/lib/scli'
-    scli = Scli.new([], Kernel)
-    scli.git_repo_url = './../gitolite-admin'
-    scli.conffile = scli.git_repo_url + '/conf/gitolite.conf'
-    scli.remove_repository(self.name)
+    $scli.remove_repository(self.name)
   end
 end
