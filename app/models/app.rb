@@ -5,12 +5,10 @@ class App < ActiveRecord::Base
   belongs_to :user
 
   def delegate_create_to_backend
-    require './lib/suploy-scli/lib/scli'
     $scli.add_repository(self.user.name, self.name)
   end
 
   def delegate_destroy_to_backend
-    require './lib/suploy-scli/lib/scli'
     $scli.remove_repository(self.name)
   end
 end

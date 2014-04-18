@@ -1,3 +1,4 @@
+require './lib/suploy-scli/lib/scli'
 $scli = Scli.new([], Kernel)
 $scli.git_repo_url = './../gitolite-admin'
 $scli.conffile = $scli.git_repo_url + '/conf/gitolite.conf'

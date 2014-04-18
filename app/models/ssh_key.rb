@@ -11,12 +11,10 @@ class SshKey < ActiveRecord::Base
   belongs_to :user
 
   def delegate_create_to_backend
-    require './lib/suploy-scli/lib/scli'
     $scli.add_ssh_key(self.user.name, self.title, self.content)
   end
 
   def delegate_destroy_to_backend
-    require './lib/suploy-scli/lib/scli'
     $scli.remove_ssh_key(self.user.name, self.title)
   end
 
