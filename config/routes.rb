@@ -19,7 +19,7 @@ BaseApp::Application.routes.draw do
 
   root 'home#index'
 
-	get '/templates/index' => 'templates#index'
-	get '/templates/login' => 'templates#login'
-	get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/ }
+  get '/templates/index' => 'templates#index'
+  get '/templates/login' => 'templates#login'
+  get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/ }
 end
