@@ -1,4 +1,4 @@
-@baseApp.factory "userService", [
+@suploy.factory "userService", [
   "$http"
   "$location"
   ($http, $location) ->

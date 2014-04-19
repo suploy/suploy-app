@@ -55,7 +55,7 @@ vim /home/git/.gitolite/hooks/common/post-receive
 	rvm install ruby-2.1.0
 	gem install bundler
 	bundle install
-	sudo -u postgres psql -U postgres -d postgres -c "CREATE USER base_app WITH PASSWORD 'password1' CREATEDB;"
+	sudo -u postgres psql -U postgres -d postgres -c "CREATE USER suploy WITH PASSWORD 'password1' CREATEDB;"
 	rake db:create
 	rake db:migrate
 	rake db:seed

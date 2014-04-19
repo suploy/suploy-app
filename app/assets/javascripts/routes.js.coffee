@@ -1,4 +1,4 @@
-@baseApp.config [
+@suploy.config [
   "$stateProvider"
   "$urlRouterProvider"
   ($stateProvider, $urlRouterProvider) ->

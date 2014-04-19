@@ -1,18 +1,18 @@
 if Rails.env.production?
 
-  BaseApp::Application.config.action_mailer.default_url_options = { :host => BaseApp.config.smtp.domain }
-  BaseApp::Application.config.mailer_sender = BaseApp.config.email
+  Suploy::Application.config.action_mailer.default_url_options = { :host => Suploy.config.smtp.domain }
+  Suploy::Application.config.mailer_sender = Suploy.config.email
   ActionMailer::Base.default_options = {
-    :from => BaseApp.config.email
+    :from => Suploy.config.email
   }
 
-  if BaseApp.config.smtp.enabled
+  if Suploy.config.smtp.enabled
     ActionMailer::Base.smtp_settings = {
-      :port => BaseApp.config.smtp.port,
-      :address => BaseApp.config.smtp.host,
-      :user_name => BaseApp.config.smtp.user,
-      :password => BaseApp.config.smtp.password,
-      :domain => BaseApp.config.smtp.domain,
+      :port => Suploy.config.smtp.port,
+      :address => Suploy.config.smtp.host,
+      :user_name => Suploy.config.smtp.user,
+      :password => Suploy.config.smtp.password,
+      :domain => Suploy.config.smtp.domain,
       :authentication => :plain
     }
     ActionMailer::Base.delivery_method = :smtp

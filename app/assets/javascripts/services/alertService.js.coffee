@@ -1,4 +1,4 @@
-@baseApp.factory "alertService", [
+@suploy.factory "alertService", [
   "$timeout"
   ($timeout) ->
     wrappedService =

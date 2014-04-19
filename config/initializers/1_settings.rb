@@ -4,7 +4,7 @@ class Settings < Settingslogic
   else
     source "#{Rails.root}/config/config.yml.example"
 
-    Settings['host'] = "base-app-flowerpot.herokuapp.com"
+    Settings['host'] = "suploy.com"
     Settings['email'] = "noreply@#{Settings.host}"
 
     Settings['smtp'] = Settingslogic.new({})

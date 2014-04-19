@@ -1,4 +1,4 @@
-module BaseApp
+module Suploy
   def self.config
     Settings
   end

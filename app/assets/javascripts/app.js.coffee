@@ -1,4 +1,4 @@
-@baseApp = angular.module("baseApp", [
+@suploy = angular.module("suploy", [
   "ngCookies"
   "ngAnimate"
   "ngTable"
@@ -9,7 +9,7 @@
 
 @baseControllers = angular.module("baseControllers", [])
 
-@baseApp.run [
+@suploy.run [
   "$templateCache"
   "$http"
   "userService"
@@ -20,7 +20,7 @@
 
 ]
 
-@baseApp.factory "httpRequestInterceptor", [
+@suploy.factory "httpRequestInterceptor", [
   "$location"
   ($location) ->
     request: (config) ->
@@ -31,7 +31,7 @@
       response
 ]
 
-@baseApp.config [
+@suploy.config [
   "$httpProvider"
   ($httpProvider) ->
     $httpProvider.interceptors.push "httpRequestInterceptor"

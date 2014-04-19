@@ -4,4 +4,4 @@ else
   redis = Redis.new
 end
 
-$redis = Redis::Namespace.new("base_app", redis: redis)
+$redis = Redis::Namespace.new("suploy", redis: redis)

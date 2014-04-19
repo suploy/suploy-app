@@ -9,4 +9,4 @@ su -l vagrant -c "source \"/home/vagrant/.rvm/scripts/rvm\""
 su -l vagrant -c "rvm install ruby-2.1.0"
 su -l vagrant -c "gem install bundler"
 
-sudo -u postgres psql -U postgres -d postgres -c "CREATE USER base_app WITH PASSWORD 'password1' CREATEDB;"
+sudo -u postgres psql -U postgres -d postgres -c "CREATE USER suploy WITH PASSWORD 'password1' CREATEDB;"
