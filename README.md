@@ -1,6 +1,8 @@
 Installation
 ------------
 
+Suploy currently only supports Ubuntu 14.04.
+
 ### Git
 
 	sudo apt-get install git-core
@@ -30,17 +32,15 @@ vim /home/git/.gitolite/hooks/common/post-receive
 
 ### Buildstep
 
-	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
-	sudo sh -c "echo deb http://get.docker.io/ubuntu docker main\
-	> /etc/apt/sources.list.d/docker.list"
-	sudo apt-get update
-	sudo apt-get install lxc-docker
+  sudo apt-get update
+	sudo apt-get install docker.io
+  sudo ln -s /usr/bin/docker.io /usr/bin/docker
 
 	sudo -u git -H git clone https://github.com/progrium/buildstep.git /home/git/buildstep
 	cd /home/git/buildstep
 	sudo make build
 	sudo gpasswd -a git docker
-	sudo service docker restart
+	sudo service docker.io restart
 
 ### Suploy Webapp
 
