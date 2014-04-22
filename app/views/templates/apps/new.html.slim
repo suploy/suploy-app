@@ -1,13 +1,10 @@
-.container
-  .row
-    .col-md-4.col-md-offset-4
-      .panel.panel-default
-        .panel-heading
-          .panel-title
-            | Create App
-        .panel-body
-          form ng-submit='createApp()'
-            .form-group
-              input#app_name.form-control type='text' placeholder='Name' ng-model='app.name'
-            .form-group
-              button.btn.btn-success.form-control type='submit' Create App
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      | Create App
+  .panel-body
+    form ng-submit='createApp()'
+      .form-group
+        input#app_name.form-control type='text' placeholder='Name' ng-model='app.name'
+      .form-group
+        button.btn.btn-success.form-control type='submit' Create App

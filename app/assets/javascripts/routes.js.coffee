@@ -25,39 +25,48 @@
       url: "/users/unlock"
       templateUrl: "/templates/users/unlock.html"
       controller: "UnlockUserCtrl"
-    ).state("profile",
-      url: "/users/profile"
-      templateUrl: "/templates/users/profile.html"
-      controller: "UserAccountCtrl"
-    ).state("home",
-      url: "/"
-      templateUrl: "/templates/index.html"
-      controller: "HomeCtrl"
-    ).state("dashboard",
+    ).state("admin.dashboard",
       url: "/admin"
       templateUrl: "/templates/admin/dashboard.html"
       controller: "AdminDashboardCtrl"
-    ).state("manage_users",
+    ).state("admin.users.list",
       url: "/admin/users"
       templateUrl: "/templates/admin/users/list.html"
       controller: "ManageUsersCtrl"
-    ).state("show_user",
+    ).state("admin.users.show",
       url: "/admin/users/:id"
       templateUrl: "/templates/admin/users/show.html"
       controller: "ShowUsersCtrl"
-    ).state("edit_user",
+    ).state("admin.users.edit",
       url: "/admin/users/:id/edit"
       templateUrl: "/templates/admin/users/edit.html"
       controller: "EditUsersCtrl"
-    ).state("list_applications",
+    ).state("user",
+      templateUrl: "/templates/users/user.html"
+      controller: "MenuCtrl"
+    ).state("user.profile",
+      url: "/profile"
+      templateUrl: "/templates/users/profile.html"
+      controller: "UserProfileCtrl"
+    ).state("user.ssh_keys",
+      url: "/ssh_keys"
+      templateUrl: "/templates/users/ssh_keys.html"
+      controller: "SshKeyCtrl"
+    ).state("home",
+      url: "/"
+      templateUrl: "/templates/apps/list.html"
+      controller: "ListAppsCtrl"
+    ).state("user.apps"
+      template: '<div ui-view></div>'
+    ).state("user.apps.list",
       url: "/apps"
       templateUrl: "/templates/apps/list.html"
       controller: "ListAppsCtrl"
-    ).state("create_application",
+    ).state("user.apps.create",
       url: "/apps/new"
       templateUrl: "/templates/apps/new.html"
       controller: "NewAppCtrl"
-    ).state("update_application",
+    ).state("user.apps.edit",
       url: "/apps/:id/edit"
       templateUrl: "/templates/apps/edit.html"
       controller: "UpdateAppCtrl"

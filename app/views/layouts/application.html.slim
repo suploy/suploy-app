@@ -15,22 +15,22 @@ html ng-app='suploy'
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a href='#/' class='navbar-brand' Suploy
+          a ng-href='{{userService.signedIn ? "#/apps" : "#/"}}' class='navbar-brand' Suploy
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav
-            li
-              a href='#/apps' Dashboard
           ul.nav.navbar-nav.navbar-right
             li ng-show='isAdmin()'
               a href='#/admin'
                 | Admin
             li ng-show='userService.signedIn'
-              a href='#/users/profile'
-                | {{ userService.email }}
+              a href='#/profile'
+                span.fa.fa-user
             li ng-show='userService.signedIn'
-              a href='#/users/sign_in' ng-click='signout()' Sign out
+              a href='#/users/sign_in' ng-click='signout()'
+                span.fa.fa-sign-out
             li ng-hide='userService.signedIn'
-              a href='#/users/sign_in' Sign in
+              a href='#/users/sign_in'
+                span.fa.fa-sign-in
 
     #alerts-container ng-controller='AlertsCtrl'
       .container ng-show="alerts.errors.length > 0"
