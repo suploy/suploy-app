@@ -5,17 +5,14 @@ Suploy currently only supports Ubuntu 14.04.
 
 ### Git
 
-	sudo apt-get install git-core
+	sudo apt-get install -y -q git-core
 	sudo adduser --disabled-login --gecos 'suploy' git
 
 ### Setup user
 
-	sudo adduser vagrant
-	sudo su vagrant
 	ssh-keygen
 	git config --global user.name "suploy"
 	git config --global user.email "suploy@suploy.com"
-	exit
 
 ### Gitolite
 
@@ -27,14 +24,15 @@ Suploy currently only supports Ubuntu 14.04.
 	sudo -u git -H /home/git/gitolite/install -to /home/git/bin
 	sudo -u git -H /home/git/bin/gitolite setup -pk /home/git/id_rsa.pub
 
-vim /home/git/.gitolite/hooks/common/post-receive
-[post-receive](doc/config/post-receive)
+Add the post-receive hook with this content [post-receive](doc/config/post-receive).
+
+	vim /home/git/.gitolite/hooks/common/post-receive
 
 ### Buildstep
 
-  sudo apt-get update
+	sudo apt-get update
 	sudo apt-get install docker.io
-  sudo ln -s /usr/bin/docker.io /usr/bin/docker
+	sudo ln -s /usr/bin/docker.io /usr/bin/docker
 
 	sudo -u git -H git clone https://github.com/progrium/buildstep.git /home/git/buildstep
 	cd /home/git/buildstep
@@ -44,9 +42,9 @@ vim /home/git/.gitolite/hooks/common/post-receive
 
 ### Suploy Webapp
 
+#### Install requirements and create database user
+
 	git clone git@localhost:gitolite-admin
-	git clone https://github.com/suploy/suploy-app.git /home/vagrant/suploy
-	cd /home/vagrant/suploy
 	git submodule init
 	git submodule update
 	sudo apt-get -y -q install gawk libgdbm-dev pkg-config libffi-dev build-essential openssl libreadline6 libreadline6-dev curl git zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev autoconf libc6-dev libncurses5-dev automake libtool bison subversion python postgresql postgresql-contrib libpq-dev redis-server python-software-properties
@@ -54,8 +52,11 @@ vim /home/git/.gitolite/hooks/common/post-receive
 	source "/home/vagrant/.rvm/scripts/rvm"
 	rvm install ruby-2.1.0
 	gem install bundler
-	bundle install
 	sudo -u postgres psql -U postgres -d postgres -c "CREATE USER suploy WITH PASSWORD 'password1' CREATEDB;"
-	rake db:create
-	rake db:migrate
-	rake db:seed
+
+#### Install suploy, required gems and setup database
+
+	git clone https://github.com/suploy/suploy-app.git /home/vagrant/suploy
+	cd /home/vagrant/suploy
+	bundle install
+	rake db:setup
