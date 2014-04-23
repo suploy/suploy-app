@@ -34,6 +34,8 @@
           input#user_current_password.form-control type='password' placeholder="Password" ng-model='current_password'
         .form-group
           button.btn.btn-success type='submit' Update Profile
+      .form-group
+        button.btn.btn-danger data-toggle='modal' data-target='#deleteModal' Delete Account
 
 #deleteModal.modal.fade tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel' aria-hidden='true'
   form.modal-dialog ng-submit='deleteAccount()'

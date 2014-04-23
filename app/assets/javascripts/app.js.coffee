@@ -13,11 +13,13 @@
   "$templateCache"
   "$http"
   "userService"
-  ($templateCache, $http, userService) ->
+  "$rootScope"
+  "$state"
+  ($templateCache, $http, userService, $rootScope, $state) ->
     userService.getUserData()
     $http.get "/templates/users/sign_in.html",
       cache: $templateCache
-
+    $rootScope.$state = $state
 ]
 
 @suploy.factory "httpRequestInterceptor", [

@@ -5,15 +5,15 @@
         .panel-body
           ul.nav.nav-pills.nav-stacked
             li ng-class='{active: $state.includes("user.apps")}'
-              a ui-sref='.apps'
+              a ui-sref='user.apps.list'
                 span.fa.fa-cloud
                 |  Apps
             li ng-class='{active: $state.includes("user.ssh_keys")}'
-              a ui-sref='.ssh_keys'
+              a ui-sref='user.ssh_keys'
                 span.fa.fa-key
                 |  SSH-Keys
             li ng-class='{active: $state.includes("user.profile")}'
-              a ui-sref='.profile'
+              a ui-sref='user.profile'
                 span.fa.fa-user
                 |  Profile
             li ng-controller='LoginCtrl'
