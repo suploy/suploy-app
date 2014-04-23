@@ -9,6 +9,12 @@
 
 @baseControllers = angular.module("baseControllers", [])
 
+@suploy.config [
+  "cfpLoadingBarProvider"
+  (cfpLoadingBarProvider) ->
+    cfpLoadingBarProvider.includeBar = false
+]
+
 @suploy.run [
   "$templateCache"
   "$http"
