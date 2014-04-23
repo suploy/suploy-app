@@ -4,31 +4,23 @@ describe Api::AppsController do
   describe "routing" do
 
     it "routes to #index" do
-      get("/apps").should route_to("apps#index")
-    end
-
-    it "routes to #new" do
-      get("/apps/new").should route_to("apps#new")
+      get("/api/apps").should route_to("api/apps#index", format: :json)
     end
 
     it "routes to #show" do
-      get("/apps/1").should route_to("apps#show", :id => "1")
-    end
-
-    it "routes to #edit" do
-      get("/apps/1/edit").should route_to("apps#edit", :id => "1")
+      get("/api/apps/1").should route_to("api/apps#show", id: "1", format: :json)
     end
 
     it "routes to #create" do
-      post("/apps").should route_to("apps#create")
+      post("/api/apps").should route_to("api/apps#create", format: :json)
     end
 
     it "routes to #update" do
-      put("/apps/1").should route_to("apps#update", :id => "1")
+      put("/api/apps/1").should route_to("api/apps#update", id: "1", format: :json)
     end
 
     it "routes to #destroy" do
-      delete("/apps/1").should route_to("apps#destroy", :id => "1")
+      delete("/api/apps/1").should route_to("api/apps#destroy", id: "1", format: :json)
     end
 
   end
