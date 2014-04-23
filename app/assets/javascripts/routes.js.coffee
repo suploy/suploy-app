@@ -52,7 +52,7 @@
       url: "/ssh_keys"
       templateUrl: "/templates/users/ssh_keys.html"
       controller: "SshKeyCtrl"
-    ).state("home",
+    ).state("user.apps.home",
       url: "/"
       templateUrl: "/templates/apps/list.html"
       controller: "ListAppsCtrl"
