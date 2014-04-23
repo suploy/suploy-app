@@ -1,4 +1,3 @@
-
 class SshKey < ActiveRecord::Base
   validate :validate_key
   validates_presence_of :title
