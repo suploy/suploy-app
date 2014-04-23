@@ -23,17 +23,14 @@ Suploy currently only supports Ubuntu 14.04.
 	sudo -u git -H git clone https://github.com/sitaramc/gitolite.git /home/git/gitolite
 	sudo -u git -H /home/git/gitolite/install -to /home/git/bin
 	sudo -u git -H /home/git/bin/gitolite setup -pk /home/git/id_rsa.pub
-
-Add the post-receive hook with this content [post-receive](doc/config/post-receive).
-
-	vim /home/git/.gitolite/hooks/common/post-receive
+	sudo -u git -H wget -P /home/git/.gitolite/hooks/common/ https://raw.githubusercontent.com/suploy/suploy-app/master/doc/config/post-receive
+	sudo -u git -H chmod 755 /home/git/.gitolite/hooks/common/post-receive
 
 ### Buildstep
 
 	sudo apt-get update
-	sudo apt-get install docker.io
+	sudo apt-get install -y -q docker.io
 	sudo ln -s /usr/bin/docker.io /usr/bin/docker
-
 	sudo -u git -H git clone https://github.com/progrium/buildstep.git /home/git/buildstep
 	cd /home/git/buildstep
 	sudo make build
