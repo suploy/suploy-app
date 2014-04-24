@@ -10,11 +10,11 @@ class SshKey < ActiveRecord::Base
   belongs_to :user
 
   def delegate_create_to_backend
-    $scli.add_ssh_key(self.user.name, self.title, self.content)
+    AddSshKeyWorker.perform_async(self.user.name, self.title, self.content)
   end
 
   def delegate_destroy_to_backend
-    $scli.remove_ssh_key(self.user.name, self.title)
+    RemoveSshKeyWorker.perform_async(self.user.name, self.title)
   end
 
   def set_fingerprint

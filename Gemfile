@@ -8,7 +8,12 @@ gem 'rails', '4.1.0'
 gem 'unicorn'
 gem 'rack-handlers'
 
-#Frontend
+# Background Jobs
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
+
+# Frontend
 gem 'slim-rails'
 gem 'uglifier'
 gem 'coffee-rails'
@@ -20,7 +25,7 @@ gem 'sass-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 
-#Js Libraries
+# Js Libraries
 gem 'angularjs-rails'
 gem 'angular_rails_csrf'
 gem 'angular-loading-bar-rails'
@@ -30,7 +35,7 @@ gem 'ng-t-rails'
 gem 'd3_rails'
 gem 'jasmine-rails'
 
-#Misc
+# Misc
 gem 'devise'
 gem 'cancan'
 gem 'pg'
