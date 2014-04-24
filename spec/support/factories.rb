@@ -9,6 +9,6 @@ FactoryGirl.define do
 
   factory :app do
     sequence(:name) {|n| "myapp#{n}" }
-    after(:create) { |app| app.confirm! }
+    user FactoryGirl.create(:user)
   end
 end

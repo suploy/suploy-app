@@ -1,7 +1,12 @@
 require 'spec_helper'
 
 describe Api::AppsController do
-  login_user
+  include Devise::TestHelpers
+
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+  end
 
   # This should return the minimal set of attributes required to create a valid
   # App. As you add validations to App, be sure to
@@ -15,7 +20,9 @@ describe Api::AppsController do
 
   describe "GET index" do
     it "assigns all apps as @apps" do
-      app = App.create! valid_attributes
+      attrs = valid_attributes
+      attrs[:user] = @user
+      app = App.create! attrs
       get :index, {format: :json}, valid_session
       assigns(:apps).should eq([app])
     end
@@ -37,15 +44,9 @@ describe Api::AppsController do
         }.to change(App, :count).by(1)
       end
 
-      it "assigns a newly created app as @app" do
+      it "returns to the created app" do
         post :create, {:app => valid_attributes, format: :json}, valid_session
-        assigns(:app).should be_a(App)
-        assigns(:app).should be_persisted
-      end
-
-      it "redirects to the created app" do
-        post :create, {:app => valid_attributes, format: :json}, valid_session
-        response.should redirect_to(App.last)
+        response.status.should == 201
       end
     end
 
@@ -54,14 +55,8 @@ describe Api::AppsController do
         # Trigger the behavior that occurs when invalid params are submitted
         App.any_instance.stub(:save).and_return(false)
         post :create, {:app => { "name" => "invalid value" }, format: :json}, valid_session
+        response.status.should == 422
         assigns(:app).should be_a_new(App)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        App.any_instance.stub(:save).and_return(false)
-        post :create, {:app => { "name" => "invalid value" }, format: :json}, valid_session
-        response.should render_template("new")
       end
     end
   end
@@ -86,8 +81,8 @@ describe Api::AppsController do
 
       it "redirects to the app" do
         app = App.create! valid_attributes
-        put :update, {:id => app.to_param, :app => valid_attributes}, valid_session
-        response.should redirect_to(app)
+        put :update, {:id => app.to_param, :app => valid_attributes, format: :json}, valid_session
+        response.status.should == 200
       end
     end
 
