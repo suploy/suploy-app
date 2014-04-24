@@ -14,9 +14,10 @@
       tbody
         tr ng-repeat='app in apps'
           td
+            a ui-sref='user.apps.show({ id: app.id })'
               | {{ app.name }}
           td
-              | {{ app.status }}
+            | {{ app.status }}
           td
             a ui-sref='user.apps.edit({ id: app.id })'
               i.glyphicon.glyphicon-edit

@@ -33,6 +33,7 @@ gem 'rails-angular-ui-router'
 gem 'ng-table-rails'
 gem 'ng-t-rails'
 gem 'd3_rails'
+gem 'zeroclipboard-rails'
 gem 'jasmine-rails'
 
 # Misc

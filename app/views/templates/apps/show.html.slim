@@ -1,0 +1,18 @@
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      | {{ app.name }}
+  .panel-body
+    table.table
+      tr
+        td Name
+        td 
+          | {{ app.name }}
+      tr
+        td Repository
+        td 
+          .input-group
+            input#repo_input.form-control type='text' value='{{ app.repository }}' readonly=true
+            span.input-group-btn
+              button#copy_repo.btn.btn-default type='button' ng-click='copy'
+                | Copy

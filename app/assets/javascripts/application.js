@@ -23,4 +23,5 @@
 //= require ng-table
 //= require bootstrap
 //= require d3
+//= require zeroclipboard
 //= require_tree .

@@ -1,3 +1,3 @@
 class AppSerializer < ActiveModel::Serializer
-  attributes :id, :name, :status
+  attributes :id, :name, :status, :repository
 end

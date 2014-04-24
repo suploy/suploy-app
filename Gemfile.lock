@@ -276,6 +276,8 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.3)
       rack (>= 1.0)
+    zeroclipboard-rails (0.0.12)
+      railties (>= 3.1)
 
 PLATFORMS
   ruby
@@ -324,3 +326,4 @@ DEPENDENCIES
   therubyracer
   uglifier
   unicorn
+  zeroclipboard-rails

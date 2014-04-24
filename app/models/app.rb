@@ -15,4 +15,8 @@ class App < ActiveRecord::Base
   def delegate_destroy_to_backend
     RemoveRepositoryWorker.perform_async(self.name)
   end
+
+  def repository
+    "git@#{Suploy.config.host}:#{self.name}"
+  end
 end
