@@ -63,7 +63,7 @@
       templateUrl: "/templates/apps/list.html"
       controller: "ListAppsCtrl"
     ).state("user.apps.show",
-      url: "/apps/:id"
+      url: "/apps/:id/show"
       templateUrl: "/templates/apps/show.html"
       controller: "ShowAppsCtrl"
     ).state("user.apps.create",
