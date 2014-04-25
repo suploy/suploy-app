@@ -61,4 +61,5 @@ group :development, :test do
   gem 'mailcatcher'
   gem 'rspec-rails'
   gem 'factory_girl'
+  gem 'database_cleaner'
 end

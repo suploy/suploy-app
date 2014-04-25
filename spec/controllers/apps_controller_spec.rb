@@ -4,6 +4,7 @@ describe Api::AppsController do
   include Devise::TestHelpers
 
   before(:each) do
+    @role = FactoryGirl.create(:role)
     @user = FactoryGirl.create(:user)
     sign_in @user
   end
@@ -42,6 +43,12 @@ describe Api::AppsController do
         expect {
           post :create, {:app => valid_attributes, format: :json}, valid_session
         }.to change(App, :count).by(1)
+      end
+
+      it "creates a new backgroud job which creates the remote repository" do
+        expect {
+          post :create, {:app => valid_attributes, format: :json}, valid_session
+        }.to change(AddRepositoryWorker.jobs, :size).by(1)
       end
 
       it "returns to the created app" do
@@ -103,6 +110,13 @@ describe Api::AppsController do
       expect {
         delete :destroy, {:id => app.to_param, format: :json}, valid_session
       }.to change(App, :count).by(-1)
+    end
+
+    it "creates a worker to remove the repository from the backend when destroying an app" do
+      app = App.create! valid_attributes
+      expect {
+        delete :destroy, {:id => app.to_param, format: :json}, valid_session
+      }.to change(RemoveRepositoryWorker.jobs, :size).by(1)
     end
 
     it "redirects to the apps list" do

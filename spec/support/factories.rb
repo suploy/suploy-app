@@ -7,6 +7,11 @@ FactoryGirl.define do
     after(:create) { |user| user.confirm! }
   end
 
+  factory :role do
+    name "User"
+    internal_name "user"
+  end
+
   factory :app do
     sequence(:name) {|n| "myapp#{n}" }
     user FactoryGirl.create(:user)
