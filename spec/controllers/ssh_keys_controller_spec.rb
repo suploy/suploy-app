@@ -4,6 +4,7 @@ describe Api::Users::SshKeysController do
   include Devise::TestHelpers
 
   before(:each) do
+    @role = FactoryGirl.create(:role)
     @user = FactoryGirl.create(:user)
     sign_in @user
   end
@@ -34,6 +35,12 @@ describe Api::Users::SshKeysController do
         }.to change(SshKey, :count).by(1)
       end
 
+      it "creates a new backgroud job which adds the sshkey to the backend" do
+        expect {
+          post :create, {:ssh_key => valid_attributes, format: :json}, valid_session
+        }.to change(AddSshKeyWorker.jobs, :size).by(1)
+      end
+
       it "assigns a newly created ssh_key as @ssh_key" do
         post :create, {:ssh_key => valid_attributes, format: :json}, valid_session
         assigns(:ssh_key).should be_a(SshKey)
@@ -62,6 +69,13 @@ describe Api::Users::SshKeysController do
       expect {
         delete :destroy, {:id => ssh_key.to_param, format: :json}, valid_session
       }.to change(SshKey, :count).by(-1)
+    end
+
+    it "creates a worker to remove the sshkey from the backend when destroying an it in the database" do
+      ssh_key = SshKey.create! valid_attributes
+      expect {
+        delete :destroy, {:id => ssh_key.to_param, format: :json}, valid_session
+      }.to change(RemoveSshKeyWorker.jobs, :size).by(1)
     end
 
     it "redirects to the ssh_keys list" do

@@ -4,8 +4,11 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'database_cleaner'
-require 'coveralls'
-Coveralls.wear!
+
+if ENV['TRAVIS']
+  require 'coveralls'
+  Coveralls.wear!
+end
 
 require 'sidekiq/testing'
 Sidekiq::Testing.fake!
@@ -48,7 +51,6 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
   end
 
   config.before(:each) do

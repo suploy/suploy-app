@@ -3,17 +3,13 @@ FactoryGirl.define do
     sequence(:email) {|n| "user#{n}@example.com" }
     sequence(:name) {|n| "user#{n}" }
     password "secretpassword"
-    confirmation_sent_at = Time.now
+    password_confirmation { password }
+    confirmation_sent_at { Time.now }
     after(:create) { |user| user.confirm! }
   end
 
   factory :role do
     name "User"
     internal_name "user"
-  end
-
-  factory :app do
-    sequence(:name) {|n| "myapp#{n}" }
-    user FactoryGirl.create(:user)
   end
 end

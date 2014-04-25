@@ -12,7 +12,7 @@ describe Api::AppsController do
   # This should return the minimal set of attributes required to create a valid
   # App. As you add validations to App, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { FactoryGirl.attributes_for(:app) }
+  let(:valid_attributes) { { "name" => "myapp", "user" => @user } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -21,9 +21,7 @@ describe Api::AppsController do
 
   describe "GET index" do
     it "assigns all apps as @apps" do
-      attrs = valid_attributes
-      attrs[:user] = @user
-      app = App.create! attrs
+      app = App.create! valid_attributes
       get :index, {format: :json}, valid_session
       assigns(:apps).should eq([app])
     end
