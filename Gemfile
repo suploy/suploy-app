@@ -57,6 +57,7 @@ group :development, :test do
   gem 'sdoc', require: false
   gem 'railroady', require: false
   gem 'coveralls', require: false
+  gem 'metric_fu', require: false
   gem 'debugger'
   gem 'mailcatcher'
   gem 'rspec-rails'

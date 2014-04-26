@@ -3,6 +3,7 @@ Installation
 
 [![Build Status](https://travis-ci.org/suploy/suploy-app.svg?branch=master)](https://travis-ci.org/suploy/suploy-app)
 [![Coverage Status](https://coveralls.io/repos/suploy/suploy-app/badge.png?branch=master)](https://coveralls.io/r/suploy/suploy-app?branch=master)
+[![Code Climate](https://codeclimate.com/github/suploy/suploy-app.png)](https://codeclimate.com/github/suploy/suploy-app)
 
 Suploy currently only supports Ubuntu 14.04.
 
