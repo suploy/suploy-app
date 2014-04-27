@@ -21,11 +21,18 @@
   "userService"
   "$rootScope"
   "$state"
-  ($templateCache, $http, userService, $rootScope, $state) ->
+  "$location"
+  ($templateCache, $http, userService, $rootScope, $state, $location) ->
     userService.getUserData()
     $http.get "/templates/users/sign_in.html",
       cache: $templateCache
     $rootScope.$state = $state
+    $rootScope.checkPermission = (state) ->
+      if state.accessLevel != accessLevels.public and not userService.signedIn
+        $location.path "/users/sign_in"
+    $rootScope.$on "$stateChangeStart", (ev, to, toParams, from, fromParams) ->
+      $rootScope.checkPermission(to)
+      return
 ]
 
 @suploy.factory "httpRequestInterceptor", [

@@ -1,7 +1,8 @@
 @suploy.factory "userService", [
   "$http"
   "$location"
-  ($http, $location) ->
+  "$rootScope"
+  ($http, $location, $rootScope) ->
     wrappedService =
       signin: (login) ->
         promise = $http.post('/api/users/sign_in', {user: login})
@@ -23,6 +24,7 @@
           wrappedService.setUserData(data.id, data.email, data.roles, true)
         promise.error (data, status, headers, config) ->
           wrappedService.resetUserData()
+          $rootScope.checkPermission($rootScope.$state.current)
         return promise
 
       setUserData: (id, email, roles, signedIn) ->

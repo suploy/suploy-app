@@ -3,11 +3,12 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :token_authenticate_user!
+  rescue_from CanCan::AccessDenied, with: :permission_denied
 
   private
 
   def permission_denied
-    render json: {error: t("devise.failure.invalid")}, status: :unauthorized
+    render json: {error: t("devise.failure.invalid")}, status: :forbidden
   end
 
   def invalid_authentication
