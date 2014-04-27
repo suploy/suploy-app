@@ -31,4 +31,5 @@ html ng-app='suploy'
               li= link_to new_user_session_path do
                 span.fa.fa-sign-in
 
-    = content_for?(:content) ? yield(:content) : yield
+    #main_wrapper
+      = content_for?(:content) ? yield(:content) : yield
