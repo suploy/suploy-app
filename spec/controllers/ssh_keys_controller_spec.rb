@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::Users::SshKeysController do
+describe Profiles::SshKeysController do
   include Devise::TestHelpers
 
   before(:each) do

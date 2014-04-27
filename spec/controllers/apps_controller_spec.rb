@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::AppsController do
+describe AppsController do
   include Devise::TestHelpers
 
   before(:each) do

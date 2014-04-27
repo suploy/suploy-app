@@ -8,7 +8,7 @@ Suploy::Application.routes.draw do
   end
   root 'apps#index'
 
-  namespace :api do
+  namespace :api, defaults: { format: :json } do
     resource :session, only: [:create, :destroy]
   end
 
