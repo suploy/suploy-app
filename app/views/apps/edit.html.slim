@@ -1,0 +1,21 @@
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      = link_to apps_path do
+        i.fa.fa-arrow-left
+      = ' ' + @app.name
+  .panel-body
+    table.table
+        tr
+          td Name
+          td
+            = form_for @app do |f|
+              = f.text_field :name, class: 'form-control'
+        tr
+          td Repository
+          td 
+            .input-group
+              = text_field_tag :repository, @app.repository, class: 'form-control', readonly: true
+              span.input-group-btn
+                button#copy_repo.btn.btn-default type='button' ng-click='copy'
+                  | Copy

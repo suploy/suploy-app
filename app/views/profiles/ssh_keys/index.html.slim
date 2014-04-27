@@ -1,0 +1,27 @@
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      | SSH-Key
+      button.btn.btn-primary.pull-right
+        i.fa.fa-add
+        | Add SSH Key
+  .panel-body
+    = form_for @ssh_key, url: profiles_ssh_keys_path do |f|
+      - if @ssh_key.errors.any?
+        - @ssh_key.errors.full_messages.each do |msg|
+          .alert.alert-danger
+            = msg
+            a class='close' data-dismiss='alert' href='#' aria-hidden='true' &times;
+      .form-group
+        = f.text_field :title, class:'form-control', placeholder: 'Title'
+      .form-group
+        = f.text_area :content, class: 'form-control', placeholder: 'Public key content', rows: '6', cols: '50'
+      .form-group
+        = f.submit 'CREATE SSH KEY', class: 'btn btn-success form-control'
+    table.table.table-striped
+      tbody
+        - @ssh_keys.each do |ssh_key|
+          tr
+            td= ssh_key.title
+            td= ssh_key.fingerprint
+            td= link_to 'Delete', profiles_ssh_key_path(ssh_key), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right'

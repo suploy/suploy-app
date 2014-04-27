@@ -11,8 +11,6 @@
  *= require_self
  *= require font-awesome
  *= require_tree .
- *= require ng-table
- *= require angular-loading-bar
  */
 @import "bootstrap";
 
@@ -24,7 +22,7 @@ td {
   vertical-align: middle !important;
 }
 
-.ng-scope.body .container {
+#main_layout_wrapper {
   margin-top: 20px;
 }
 
@@ -50,10 +48,6 @@ td {
 
 .forgot-password {
   margin-top: 3px;
-}
-
-form .alert {
-  margin-bottom: 0px !important;
 }
 
 .panel-danger .panel-body ul {

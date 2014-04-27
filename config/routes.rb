@@ -1,12 +1,19 @@
 Suploy::Application.routes.draw do
 
+  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
-  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
-  devise_for :users, path_prefix: 'api', defaults: {format: :json}, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
+  resources :apps
+  namespace :profiles do
+    resources :ssh_keys, except: [:edit, :update]
+  end
+  root 'apps#index'
 
-  namespace :api, defaults: { format: :json } do
-    get '/users/profile/me', to: 'profiles#me'
+  namespace :api do
     resource :session, only: [:create, :destroy]
+  end
+
+  scope '/api', defaults: { format: :json } do
+    get '/users/profile/me', to: 'profiles#me'
     resources :apps, except: [:new, :edit]
     namespace :users do
       resources :ssh_keys, except: [:new, :edit]
@@ -17,9 +24,4 @@ Suploy::Application.routes.draw do
     end
   end
 
-  root 'home#index'
-
-  get '/templates/index' => 'templates#index'
-  get '/templates/login' => 'templates#login'
-  get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/ }
 end

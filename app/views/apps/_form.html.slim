@@ -1,0 +1,5 @@
+= form_for @app do |f|
+  .form-group
+    = f.text_field :name, class: 'form-control', placeholder: 'Name'
+  .form-group
+    = f.submit 'Create App', class: 'btn btn-success form-control'

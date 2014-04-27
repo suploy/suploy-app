@@ -1,0 +1,25 @@
+= inside_layout 'application' do
+  #main_layout_wrapper
+    .container
+      .row
+        .col-md-3
+          .panel.panel-default
+            .panel-body
+              ul.nav.nav-pills.nav-stacked
+                li class=('active' if controller?('apps'))
+                  = link_to apps_path do
+                    span.fa.fa-cloud
+                    |  Apps
+                li class=('active' if controller?('profiles/ssh_keys'))
+                  = link_to profiles_ssh_keys_path do
+                    span.fa.fa-key
+                    |  SSH-Keys
+                li class=('active' if controller?('users/registration'))
+                  = link_to edit_user_registration_path do
+                    span.fa.fa-user
+                    |  Profile
+                li= link_to destroy_user_session_path, method: :delete
+                  span.fa.fa-sign-out
+                  |  Logout
+        .col-md-9
+          = yield

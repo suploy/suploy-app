@@ -1,4 +1,4 @@
-class Api::SessionsController < Api::BaseController
+class SessionsController < Api::BaseController
   skip_before_action :verify_authenticity_token
   skip_before_action :token_authenticate_user!, only: :create
   skip_before_action :authenticate_user!, only: [:create]

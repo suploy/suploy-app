@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :token_authenticate_user!
-  rescue_from CanCan::AccessDenied, with: :permission_denied
+  before_action :authenticate_user!
+  #rescue_from CanCan::AccessDenied, with: :permission_denied
 
   private
 
@@ -31,9 +32,5 @@ class ApplicationController < ActionController::Base
 
   def authorization_header
     request.headers['HTTP_AUTHORIZATION']
-  end
-
-  def after_sign_in_path_for(user)
-    "#/"
   end
 end

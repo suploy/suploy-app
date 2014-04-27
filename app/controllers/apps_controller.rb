@@ -1,15 +1,32 @@
-class Api::AppsController < Api::BaseController
+class AppsController < ApplicationController
+  layout 'main'
+
   before_action :set_app, only: [:show, :edit, :update, :destroy]
 
   # GET /apps
   def index
     @apps = current_user.apps
-    render json: {apps: @apps, meta: {total:App.all.count}}
+    respond_to do |format|
+      format.html
+      format.json { render json: {apps: @apps, meta: {total:App.all.count}} }
+    end
   end
 
   # GET /apps/1
   def show
-    render json: @app
+    respond_to do |format|
+      format.html
+      format.json { render json: @app }
+    end
+  end
+
+  # GET /apps/new
+  def new
+    @app = App.new
+  end
+
+  # GET /apps/1/edit
+  def edit
   end
 
   # POST /apps
@@ -19,20 +36,23 @@ class Api::AppsController < Api::BaseController
 
     respond_to do |format|
       if @app.save
+        format.html { redirect_to edit_app_url(@app), notice: 'App was successfully created.' }
         format.json { render json: @app, status: :created }
       else
+        format.html { render action: 'new' }
         format.json { render json: @app.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /apps/1
-  # PATCH/PUT /apps/1.json
   def update
     respond_to do |format|
       if @app.update(app_params)
+        format.html { redirect_to @app, notice: 'App was successfully updated.' }
         format.json { render json: @app, status: :ok }
       else
+        format.html { render action: 'edit' }
         format.json { render json: @app.errors, status: :unprocessable_entity }
       end
     end
@@ -43,6 +63,7 @@ class Api::AppsController < Api::BaseController
   def destroy
     @app.destroy
     respond_to do |format|
+      format.html { redirect_to apps_url }
       format.json { head :no_content }
     end
   end

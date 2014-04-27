@@ -26,15 +26,11 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 
 # Js Libraries
-gem 'angularjs-rails'
-gem 'angular_rails_csrf'
-gem 'angular-loading-bar-rails'
-gem 'rails-angular-ui-router'
-gem 'ng-table-rails'
-gem 'ng-t-rails'
 gem 'd3_rails'
 gem 'zeroclipboard-rails'
-gem 'jasmine-rails'
+gem 'turbolinks'
+gem 'jquery-turbolinks'
+gem 'nprogress-rails'
 
 # Misc
 gem 'devise'
@@ -60,6 +56,7 @@ group :development, :test do
   gem 'metric_fu', require: false
   gem 'debugger'
   gem 'mailcatcher'
+  gem 'jasmine-rails'
   gem 'rspec-rails'
   gem 'factory_girl'
   gem 'database_cleaner'

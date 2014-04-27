@@ -12,16 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require angular
-//= require angular-route
-//= require angular-animate
-//= require angular-resource
-//= require angular-cookies
-//= require angular-ui-router
-//= require angular-loading-bar
-//= require ng-t
-//= require ng-table
+//= require jquery.turbolinks
 //= require bootstrap
 //= require d3
 //= require zeroclipboard
+//= require nprogress
+//= require nprogress-turbolinks
+//= require turbolinks
 //= require_tree .

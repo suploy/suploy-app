@@ -4,7 +4,8 @@ describe 'API auth' do
   include JsonApiHelpers
 
   before do
-    @user = create(:user)
+    @role = FactoryGirl.create(:role)
+    @user = FactoryGirl.create(:user)
     $redis.flushdb
   end
 
