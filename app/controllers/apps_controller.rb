@@ -63,7 +63,7 @@ class AppsController < ApplicationController
   def destroy
     @app.destroy
     respond_to do |format|
-      format.html { redirect_to apps_url }
+      format.html { redirect_to apps_url, notice: 'App was succussfully removed.' }
       format.json { head :no_content }
     end
   end

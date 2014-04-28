@@ -23,17 +23,3 @@
       h4.text-center
         | Go ahead and 
         = link_to 'create one!', new_app_path
-
-#deleteModal.modal.fade tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel' aria-hidden='true'
-  form.modal-dialog ng-submit='deleteApp()'
-    .modal-content
-      .modal-header
-        button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
-        h4#deleteModalLabel.modal-title Delete App
-      .modal-body
-        p Do you really want to delete this app?
-        p 
-          b Once the app is deleted, all related databases will not restorable.
-      .modal-footer
-        button.btn.btn-default type="button" data-dismiss="modal" Close
-        button.btn.btn-danger type="submit" Delete App

@@ -20,7 +20,7 @@ class Profiles::SshKeysController < ApplicationController
 
     respond_to do |format|
       if @ssh_key.save
-        format.html { redirect_to profiles_ssh_keys_path }
+        format.html { redirect_to profiles_ssh_keys_path, notice: 'SSH Key was successfully created.' }
         format.json { render json: @ssh_key, status: :created }
       else
         format.html { render action: 'index' }
@@ -34,7 +34,7 @@ class Profiles::SshKeysController < ApplicationController
   def destroy
     @ssh_key.destroy
     respond_to do |format|
-      format.html { redirect_to profiles_ssh_keys_path }
+      format.html { redirect_to profiles_ssh_keys_path, notice: 'SSH Key was succussfully removed.' }
       format.json { head :no_content }
     end
   end
