@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414111946) do
+ActiveRecord::Schema.define(version: 20140412133814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,29 +19,10 @@ ActiveRecord::Schema.define(version: 20140414111946) do
   create_table "apps", force: true do |t|
     t.string   "name"
     t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "user_id"
-  end
-
-  create_table "roles", force: true do |t|
-    t.string   "name"
-    t.string   "internal_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "roles", ["internal_name"], name: "index_roles_on_internal_name", using: :btree
-
-  create_table "roles_users", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "roles_users", ["role_id"], name: "index_roles_users_on_role_id", using: :btree
-  add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id", using: :btree
 
   create_table "ssh_keys", force: true do |t|
     t.string   "title"
@@ -70,11 +51,12 @@ ActiveRecord::Schema.define(version: 20140414111946) do
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "name"
     t.string   "provider"
     t.string   "uid"
-    t.string   "name"
+    t.boolean  "admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

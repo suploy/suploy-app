@@ -4,7 +4,6 @@ describe Profiles::SshKeysController do
   include Devise::TestHelpers
 
   before(:each) do
-    @role = FactoryGirl.create(:role)
     @user = FactoryGirl.create(:user)
     sign_in @user
   end

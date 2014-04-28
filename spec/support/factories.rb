@@ -7,9 +7,4 @@ FactoryGirl.define do
     confirmation_sent_at { Time.now }
     after(:create) { |user| user.confirm! }
   end
-
-  factory :role do
-    name "User"
-    internal_name "user"
-  end
 end
