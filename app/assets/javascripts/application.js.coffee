@@ -14,6 +14,7 @@
 #= require jquery_ujs
 #= require jquery.turbolinks
 #= require bootstrap
+#= require underscore
 #= require d3
 #= require zeroclipboard
 #= require nprogress

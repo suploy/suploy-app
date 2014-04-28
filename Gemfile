@@ -27,6 +27,7 @@ gem 'font-awesome-sass'
 
 # Js Libraries
 gem 'd3_rails'
+gem 'underscore-rails'
 gem 'zeroclipboard-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks'

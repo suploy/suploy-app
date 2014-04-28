@@ -1,0 +1,6 @@
+// Toggler
+//--------
+.js-toggler-container .turn-on  { display: inherit; }
+.js-toggler-container .turn-off { display: none; }
+.js-toggler-container.on .turn-on  { display: none; }
+.js-toggler-container.on .turn-off { display: inherit; }

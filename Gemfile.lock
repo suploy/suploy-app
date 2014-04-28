@@ -344,6 +344,7 @@ GEM
     uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    underscore-rails (1.6.0)
     unicorn (4.8.2)
       kgio (~> 2.6)
       rack
@@ -398,5 +399,6 @@ DEPENDENCIES
   therubyracer
   turbolinks
   uglifier
+  underscore-rails
   unicorn
   zeroclipboard-rails
