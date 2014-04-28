@@ -6,7 +6,6 @@ module ApplicationHelper
   end
 
   def controller?(*controller)
-    puts params[:controller]
     controller.include?(params[:controller])
   end
 

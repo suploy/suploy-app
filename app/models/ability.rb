@@ -4,20 +4,33 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
 
-    if user.has_role? :admin
+    if user.admin? :admin
       can :manage, :all
-    elsif user.has_role? :user
-      can :read, User do |u|
-        u && u == user
+    elsif user_signed_in
+      #SshKeys
+      can :read, SshKey do |k|
+        k && k.user == user
       end
-      can :update, User do |u|
-        u && u == user
+      can :create, SshKey do |k|
+        k && k.user == user
       end
-      can :destroy, User do |u|
-        u && u == user
+      can :destroy, SshKey do |k|
+        k && k.user == user
       end
-    else
-      can :create, User
+
+      #Apps
+      can :read, App do |a|
+        a && a.user == user
+      end
+      can :create, App do |a|
+        a && a.user == user
+      end
+      can :update, App do |a|
+        a && a.user == user
+      end
+      can :destroy, App do |a|
+        a && a.user == user
+      end
     end
   end
 end

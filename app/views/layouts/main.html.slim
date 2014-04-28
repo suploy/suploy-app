@@ -13,7 +13,7 @@
                 = link_to profiles_ssh_keys_path do
                   span.fa.fa-key
                   |  SSH-Keys
-              li class=('active' if controller?('users/registration'))
+              li class=('active' if controller?('devise/registrations'))
                 = link_to edit_user_registration_path do
                   span.fa.fa-user
                   |  Profile

@@ -1,0 +1,28 @@
+.container
+  .unauth-user-panel.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+    .panel.panel-info
+      .panel-heading
+        .panel-title.pull-left Change your password
+        .forgot-password.pull-right.text-85= link_to 'Sign in', new_user_session_path
+        .clearfix
+
+      .panel-body
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+          = devise_error_messages!
+          = f.hidden_field :reset_password_token
+
+          .input-group
+            span.input-group-addon
+              i.glyphicon.glyphicon-user
+            = f.password_field :password, class: 'form-control', placeholder: 'New password', autofocus: true, autocomplete: 'off'
+
+          .input-group
+            span.input-group-addon
+              i.glyphicon.glyphicon-user
+            = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm new password', autocomplete: 'off'
+
+          .input-group
+            .controls
+              = f.submit 'Change my password', class: 'btn btn-default'
+
+        = render 'devise/shared/links'
