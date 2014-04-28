@@ -14,7 +14,5 @@ $ ->
     $(@).find('i').
       toggleClass('fa-chevron-down').
       toggleClass('fa-chevron-up')
-    console.log $(@).closest(".js-toggle-container")
-    console.log $(@).closest(".js-toggle-container").find(".js-toggle-content")
     $(@).closest(".js-toggle-container").find(".js-toggle-content").toggle()
     e.preventDefault()

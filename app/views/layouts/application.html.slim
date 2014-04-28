@@ -20,16 +20,14 @@ html ng-app='suploy'
           ul.nav.navbar-nav
           ul.nav.navbar-nav.navbar-right
             - if user_signed_in? && current_user.admin?
-              li= link_to 'Admin', "/"
+              li= link_to admin_dashboard_index_path do
+                span.fa.fa-cogs
             - if user_signed_in?
               li= link_to edit_user_registration_path do
                 span.fa.fa-user
             - if user_signed_in?
               li= link_to destroy_user_session_path, method: :delete do
-                span.fa.fa-sign-out
-            - if !user_signed_in?
-              li= link_to new_user_session_path do
-                span.fa.fa-sign-in
+                span.fa.fa-power-off
 
     - if notice || alert
       .container

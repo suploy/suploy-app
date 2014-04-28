@@ -13,6 +13,11 @@ class Profiles::SshKeysController < ApplicationController
     end
   end
 
+  # GET /ssh_keys/new
+  def new
+    @ssh_key = SshKey.new
+  end
+
   # POST /ssh_keys
   def create
     @ssh_key = SshKey.new(ssh_key_params)
@@ -23,7 +28,7 @@ class Profiles::SshKeysController < ApplicationController
         format.html { redirect_to profiles_ssh_keys_path, notice: 'SSH Key was successfully created.' }
         format.json { render json: @ssh_key, status: :created }
       else
-        format.html { render action: 'index' }
+        format.html { render action: 'new' }
         format.json { render json: @ssh_key.errors, status: :unprocessable_entity }
       end
     end

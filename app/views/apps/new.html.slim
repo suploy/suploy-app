@@ -5,4 +5,16 @@
         i.fa.fa-arrow-left
       |  Create App
   .panel-body
-    = render 'form'
+    = form_for @app do |f|
+      - if @app.errors.any?
+        #error_explanation
+          h2
+            = pluralize(@app.errors.count, "error")
+            |  prohibited this app from being saved:
+          ul
+            - @app.errors.full_messages.each do |message|
+              li= message
+      .form-group
+        = f.text_field :name, class: 'form-control', placeholder: 'Name'
+      .form-group
+        = f.submit 'CREATE APP', class: 'btn btn-success form-control'

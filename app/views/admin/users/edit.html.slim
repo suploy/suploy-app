@@ -1,0 +1,17 @@
+.container
+  .row
+    .col-md-12
+      .panel.panel-default
+        .panel-heading
+          | Edit user with id: 
+          = @user.id
+        .panel-body
+          = form_for @user, url: admin_user_path(@user) do |f|
+            .form-group
+              = f.label :name
+              = f.text_field :name, class: 'form-control', placeholder: 'Name'
+            .form-group
+              = f.label :email, 'E-Mail'
+              = f.email_field :email, class: 'form-control', placeholder: 'E-Mail'
+            .form-group
+              button.btn.btn-success type='submit' Update user

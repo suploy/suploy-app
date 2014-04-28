@@ -1,0 +1,23 @@
+.container
+  .row
+    .col-md-12
+      .panel.panel-default
+        .panel-heading
+          | Show user
+        .panel-body
+          table.table
+            tbody
+              tr
+                td.text-right ID
+                td= @user.id
+              tr
+                td.text-right Name
+                td= @user.name
+              tr
+                td.text-right E-Mail
+                td= @user.email
+              tr
+                td
+                td
+                  = link_to 'Edit', edit_admin_user_path(@user), class: 'btn btn-default'
+                  = link_to 'Delete', admin_user_path(@user), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }

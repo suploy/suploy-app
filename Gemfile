@@ -46,6 +46,7 @@ gem 'rails_12factor', group: :production
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'kaminari'
+gem 'kaminari-bootstrap'
 gem 'sshkey'
 gem 'oyster'
 

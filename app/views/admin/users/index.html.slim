@@ -1,0 +1,33 @@
+.container
+  .row
+    .col-md-12
+      .panel.panel-default
+        .panel-heading Manage users
+        .panel-body
+          table.table.table-striped.ng-table-responsive ng-table='usersTable'
+            thead
+              th ID
+              td Name
+              th E-Mail
+              th Created
+              th Last Login
+              th.text-center Failed attempts
+              th
+              th
+            tbody
+              - @users.each do |user|
+                tr
+                  td= user.id
+                  td= link_to user.name, admin_user_path(user)
+                  td= user.email
+                  td= I18n.l user.created_at
+                  - if user.last_sign_in_at
+                    td= I18n.l user.last_sign_in_at
+                  - else
+                    td= 'Never'
+                  td.text-center= user.failed_attempts
+                  td= link_to edit_admin_user_path(user) do
+                    i.glyphicon.glyphicon-edit
+                  td= link_to admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } do
+                    i.glyphicon.glyphicon-remove.text-danger
+          .text-center= paginate @users
