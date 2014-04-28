@@ -31,5 +31,18 @@ html ng-app='suploy'
               li= link_to new_user_session_path do
                 span.fa.fa-sign-in
 
+    - if notice || alert
+      .container
+        - if notice
+          .alert.alert-info
+            = notice
+            a.close href='#' data-dismiss='alert' aria-hidden='true'
+              | &times;
+        - if alert
+          .alert.alert-warning
+            = alert
+            a.close href='#' data-dismiss='alert' aria-hidden='true'
+              | &times;
+
     #main_wrapper
       = content_for?(:content) ? yield(:content) : yield
