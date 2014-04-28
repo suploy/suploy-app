@@ -9,13 +9,13 @@ Suploy::Application.routes.draw do
   root 'apps#index'
 
   namespace :api, defaults: { format: :json } do
+    get '/users/profile/me', to: 'profiles#me'
     resource :session, only: [:create, :destroy]
   end
 
   scope '/api', defaults: { format: :json } do
-    get '/users/profile/me', to: 'profiles#me'
     resources :apps, except: [:new, :edit]
-    namespace :users do
+    namespace :profiles do
       resources :ssh_keys, except: [:new, :edit]
     end
     namespace :admin do
