@@ -1,4 +1,4 @@
-class Api::Admin::UsersController < Api::Admin::BaseController
+class Admin::UsersController < Admin::BaseController
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /api/admin/users.json
@@ -35,10 +35,6 @@ class Api::Admin::UsersController < Api::Admin::BaseController
   end
 
   private
-
-  def serialized_users(users)
-    ActiveModel::ArraySerializer.new(users).as_json
-  end
 
   def set_user
     @user = User.find(params[:id])
