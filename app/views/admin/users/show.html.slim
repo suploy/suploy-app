@@ -3,7 +3,10 @@
     .col-md-12
       .panel.panel-default
         .panel-heading
-          | Show user
+          | Show user: 
+          = @user.name
+          - if @user.admin?
+            b  Admin
         .panel-body
           table.table
             tbody
