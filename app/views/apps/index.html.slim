@@ -19,7 +19,6 @@
               td.text-right= link_to app, method: :delete, data: { confirm: 'Are you sure?' } do
                 i.glyphicon.glyphicon-remove.text-danger
     - else
-      h4.text-center You have not yet added an ssh-key.
+      h4.text-center You have not yet created an app.
       h4.text-center
-        | Go ahead and 
-        = link_to 'create one!', new_app_path
+        = link_to 'Create a new app!', new_app_path

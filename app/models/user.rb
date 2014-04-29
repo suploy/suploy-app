@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :ssh_keys
   has_many :apps
 
+  validates :name, uniqueness: true
+
   def self.find_for_github_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info
     user = User.where(:email => data["email"]).first

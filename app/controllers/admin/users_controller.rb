@@ -27,7 +27,6 @@ class Admin::UsersController < Admin::BaseController
   # PUT/PATCH /api/admin/users/1.json
   def update
     authorize! :update, @user
-    puts user_params
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to admin_user_path(@user), notice: 'User was successfully updated.' }
@@ -60,6 +59,6 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def user_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email, :name)
   end
 end
