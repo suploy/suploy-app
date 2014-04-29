@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20140412133814) do
     t.datetime "updated_at"
   end
 
+  add_index "apps", ["name"], name: "index_apps_on_name", unique: true, using: :btree
+
   create_table "ssh_keys", force: true do |t|
     t.string   "title"
     t.string   "fingerprint"
