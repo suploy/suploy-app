@@ -1,6 +1,6 @@
 #!/bin/bash
 port=5000
-name=$(date +%s)
+name=`pwd | awk -F/ '{print $NF}' | sed 's/....$//'`
 git archive --format=tar master | ~/buildstep/buildstep $name
 container=$(docker run -p $port -d $name /bin/bash -c "/start web")
 public_port=$(docker port $container $port)
