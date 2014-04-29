@@ -11,6 +11,7 @@ Suploy::Application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: :index
+    get '/', to: 'dashboard#index'
     resources :users
   end
 

@@ -4,6 +4,7 @@ class AppsController < ApplicationController
   before_action :set_app, only: [:show, :edit, :update, :destroy]
 
   # GET /apps
+  # GET /api/apps
   def index
     @apps = current_user.apps
     respond_to do |format|
@@ -13,6 +14,7 @@ class AppsController < ApplicationController
   end
 
   # GET /apps/1
+  # GET /api/apps/1
   def show
     respond_to do |format|
       format.html
@@ -30,6 +32,7 @@ class AppsController < ApplicationController
   end
 
   # POST /apps
+  # POST /api/apps
   def create
     @app = App.new(app_params)
     @app.user = current_user
@@ -46,6 +49,7 @@ class AppsController < ApplicationController
   end
 
   # PATCH/PUT /apps/1
+  # PATCH/PUT /api/apps/1
   def update
     respond_to do |format|
       if @app.update(app_params)
@@ -59,7 +63,7 @@ class AppsController < ApplicationController
   end
 
   # DELETE /apps/1
-  # DELETE /apps/1.json
+  # DELETE /api/apps/1
   def destroy
     @app.destroy
     respond_to do |format|

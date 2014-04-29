@@ -1,7 +1,7 @@
 class Admin::UsersController < Admin::BaseController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /api/admin/users.json
+  # GET /admin/users
   def index
     authorize! :index, User
     @users = User.order(:username).page params[:page]
@@ -11,7 +11,7 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
-  # GET /api/admin/users/1.json
+  # GET /admin/users/1
   def show
     authorize! :read, @user
     respond_to do |format|
@@ -24,7 +24,7 @@ class Admin::UsersController < Admin::BaseController
   def edit
   end
 
-  # PUT/PATCH /api/admin/users/1.json
+  # PUT/PATCH /admin/users/1
   def update
     authorize! :update, @user
     respond_to do |format|
@@ -38,7 +38,7 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
-  # DELETE /api/admin/users/1.json
+  # DELETE /admin/users/1
   def destroy
     authorize! :destroy, @user
     @user.destroy

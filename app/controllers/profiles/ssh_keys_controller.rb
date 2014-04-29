@@ -5,6 +5,7 @@ class Profiles::SshKeysController < ApplicationController
   before_action :set_ssh_keys, only: [:index, :create]
 
   # GET /ssh_keys
+  # GET /api/ssh_keys
   def index
     @ssh_key = SshKey.new
     respond_to do |format|
@@ -19,6 +20,7 @@ class Profiles::SshKeysController < ApplicationController
   end
 
   # POST /ssh_keys
+  # POST /api/ssh_keys
   def create
     @ssh_key = SshKey.new(ssh_key_params)
     @ssh_key.user = current_user
@@ -35,7 +37,7 @@ class Profiles::SshKeysController < ApplicationController
   end
 
   # DELETE /ssh_keys/1
-  # DELETE /ssh_keys/1.json
+  # DELETE /api/ssh_keys/1
   def destroy
     @ssh_key.destroy
     respond_to do |format|
