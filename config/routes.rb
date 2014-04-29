@@ -27,9 +27,6 @@ Suploy::Application.routes.draw do
     namespace :profiles do
       resources :ssh_keys, except: [:new, :edit]
     end
-    namespace :admin do
-      resources :users, except: [:new, :edit]
-    end
   end
 
 end
