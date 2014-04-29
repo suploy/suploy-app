@@ -50,6 +50,11 @@ gem 'kaminari-bootstrap'
 gem 'sshkey'
 gem 'oyster'
 
+# SCLI
+gem 'docker-api', :require => 'docker'
+gem 'gitolite'
+
+
 # Dev & Test
 group :development, :test do
   gem 'sdoc', require: false
