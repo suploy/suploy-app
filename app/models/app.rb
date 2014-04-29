@@ -9,7 +9,7 @@ class App < ActiveRecord::Base
                       message: "only letters, digits, spaces & '_' '-' '.' allowed. Letter or digit should be first" }
 
   def delegate_create_to_backend
-    AddRepositoryWorker.perform_async(self.user.name, self.name)
+    AddRepositoryWorker.perform_async(self.user.username, self.name)
   end
 
   def delegate_destroy_to_backend
