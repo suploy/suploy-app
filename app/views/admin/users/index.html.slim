@@ -19,7 +19,7 @@
                 tr
                   td= user.id
                   td
-                    = link_to user.name, admin_user_path(user)
+                    = link_to user.username, admin_user_path(user)
                     - if user.admin?
                       b  Admin
                   td= user.email

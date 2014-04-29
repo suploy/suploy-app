@@ -31,7 +31,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.datetime :locked_at
 
       ## OAuth
-      t.string :name
+      t.string :username
       t.string :provider
       t.string :uid
 
@@ -42,7 +42,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
     end
 
     add_index :users, :email,                :unique => true
-    add_index :users, :name,                 :unique => true
+    add_index :users, :username,                 :unique => true
     add_index :users, :reset_password_token, :unique => true
     add_index :users, :confirmation_token,   :unique => true
     add_index :users, :unlock_token,         :unique => true

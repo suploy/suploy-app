@@ -8,14 +8,14 @@
 
 if Rails.env.development?
   puts "Add development user"
-  user = User.new({name: "test", email: 'test@example.com', password: 'test', password_confirmation: 'test'})
+  user = User.new({username: "test", email: 'test@example.com', password: 'test', password_confirmation: 'test'})
   user.confirmation_sent_at = Time.now
   user.skip_confirmation!
   user.save!(:validate => false)
 
   50.times do |i|
     puts "Add development user"
-    user = User.new({name: "test#{i}", email: "test#{i}@example.com", password: 'test', password_confirmation: 'test'})
+    user = User.new({username: "test#{i}", email: "test#{i}@example.com", password: 'test', password_confirmation: 'test'})
     user.confirmation_sent_at = Time.now
     user.skip_confirmation!
     user.save!(:validate => false)
@@ -23,7 +23,7 @@ if Rails.env.development?
 end
 
 puts "Add development admin"
-user = User.new({name: "admin", email: 'admin@example.com', password: 'test', password_confirmation: 'test', admin: true})
+user = User.new({username: "admin", email: 'admin@example.com', password: 'test', password_confirmation: 'test', admin: true})
 user.confirmation_sent_at = Time.now
 user.skip_confirmation!
 user.save!(:validate => false)

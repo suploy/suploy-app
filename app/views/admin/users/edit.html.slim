@@ -4,7 +4,7 @@
       .panel.panel-default
         .panel-heading
           | Edit user: 
-          = @user.name
+          = @user.username
           - if @user.admin?
             b  Admin
         .panel-body
@@ -18,8 +18,8 @@
                   - @user.errors.full_messages.each do |message|
                     li= message
             .form-group
-              = f.label :name
-              = f.text_field :name, class: 'form-control', placeholder: 'Name'
+              = f.label :username
+              = f.text_field :username, class: 'form-control', placeholder: 'Name'
             .form-group
               = f.label :email, 'E-Mail'
               = f.email_field :email, class: 'form-control', placeholder: 'E-Mail'

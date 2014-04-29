@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :email, :created_at, :updated_at,
+  attributes :id, :username, :email, :created_at, :updated_at,
     :last_sign_in_at, :failed_attempts
 
   def filter(keys)

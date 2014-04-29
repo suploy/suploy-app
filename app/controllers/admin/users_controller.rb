@@ -4,7 +4,7 @@ class Admin::UsersController < Admin::BaseController
   # GET /api/admin/users.json
   def index
     authorize! :index, User
-    @users = User.order(:name).page params[:page]
+    @users = User.order(:username).page params[:page]
     respond_to do |format|
       format.html
       format.json { render json: {meta:{total: User.all.count}, users: serialized_users(@users)} }
@@ -59,6 +59,6 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def user_params
-    params.require(:user).permit(:email, :name, :admin)
+    params.require(:user).permit(:email, :username, :admin)
   end
 end

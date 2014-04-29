@@ -4,7 +4,7 @@
       .panel.panel-default
         .panel-heading
           | Show user: 
-          = @user.name
+          = @user.username
           - if @user.admin?
             b  Admin
         .panel-body
@@ -15,7 +15,7 @@
                 td= @user.id
               tr
                 td.text-right Name
-                td= @user.name
+                td= @user.username
               tr
                 td.text-right E-Mail
                 td= @user.email

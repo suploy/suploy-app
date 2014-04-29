@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :ssh_keys
   has_many :apps
 
-  validates :name, uniqueness: {
+  validates :username, uniqueness: {
     case_sensitive: false
   }
 
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
-      where(conditions).where(["lower(name) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
     else
       where(conditions).first
     end
@@ -29,10 +29,12 @@ class User < ActiveRecord::Base
     user = User.where(:email => data["email"]).first
 
     unless user
-      user = User.create( email: data["email"],
+      user = User.create( username: data["nickname"],
+                          email: data["email"],
                           provider: access_token.provider,
                           uid: access_token.uid,
                           password: Devise.friendly_token[0,20],
+                          confirmed_at: Time.now
                         )
     end
     user

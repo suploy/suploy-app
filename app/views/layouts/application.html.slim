@@ -28,6 +28,9 @@ html ng-app='suploy'
             - if user_signed_in?
               li= link_to destroy_user_session_path, method: :delete do
                 span.fa.fa-power-off
+            - if user_signed_in?
+              li= link_to edit_user_registration_path
+                img.img-rounded src=(gravatar_url current_user, 20)
 
     - if notice || alert
       .container

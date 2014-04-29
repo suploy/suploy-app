@@ -56,11 +56,11 @@ group :development, :test do
   gem 'railroady', require: false
   gem 'coveralls', require: false
   gem 'metric_fu', require: false
+  gem 'cucumber-rails', require: false
   gem 'debugger'
   gem 'mailcatcher'
   gem 'jasmine-rails'
   gem 'rspec-rails'
   gem 'factory_girl'
   gem 'database_cleaner'
-  gem 'cucumber-rails'
 end
