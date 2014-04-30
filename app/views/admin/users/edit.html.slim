@@ -3,10 +3,13 @@
     .col-md-12
       .panel.panel-default
         .panel-heading
-          | Edit user: 
-          = @user.username
-          - if @user.admin?
-            b  Admin
+          .panel-title
+            = link_to admin_users_path do
+              i.fa.fa-arrow-left
+            |  Edit user: 
+            = @user.username
+            - if @user.admin?
+              b  Admin
         .panel-body
           = form_for @user, url: admin_user_path(@user) do |f|
             - if @user.errors.any?

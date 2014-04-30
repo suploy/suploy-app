@@ -2,7 +2,11 @@
   .row
     .col-md-12
       .panel.panel-default
-        .panel-heading Manage users
+        .panel-heading
+          .panel-title
+            = link_to admin_path do
+              i.fa.fa-arrow-left
+            |  Manage users
         .panel-body
           table.table.table-striped.ng-table-responsive ng-table='usersTable'
             thead
