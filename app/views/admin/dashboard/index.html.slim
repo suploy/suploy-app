@@ -6,3 +6,13 @@
         .panel-body
           ul
             li= link_to 'Manage users', admin_users_path
+    .col-md-4
+      .panel.panel-default
+        .panel-heading Misc
+        .panel-body
+          p
+            | Ruby
+            span.pull-right= RUBY_VERSION
+          p
+            | Rails
+            span.pull-right= Gem.loaded_specs["rails"].version
