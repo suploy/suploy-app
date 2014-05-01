@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Suploy::Application.routes.draw do
 
   # Main App
@@ -9,8 +11,14 @@ Suploy::Application.routes.draw do
     resources :ssh_keys, except: [:edit, :update]
   end
 
+  constraint = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin? }
+  constraints constraint do
+    mount Sidekiq::Web, at: "/admin/sidekiq", as: :sidekiq
+  end
+
   namespace :admin do
     resources :dashboard, only: :index
+    resources :background_jobs, only: :index
     get '/', to: 'dashboard#index'
     resources :users
   end
