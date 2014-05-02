@@ -62,6 +62,7 @@ group :development, :test do
   gem 'coveralls', require: false
   gem 'metric_fu', require: false
   gem 'cucumber-rails', require: false
+  gem 'foreman'
   gem 'debugger'
   gem 'mailcatcher'
   gem 'jasmine-rails'
