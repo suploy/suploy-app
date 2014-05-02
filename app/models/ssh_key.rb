@@ -6,8 +6,13 @@ class SshKey < ActiveRecord::Base
   after_create :delegate_create_to_backend
   after_destroy :delegate_destroy_to_backend
   before_save :set_fingerprint
+  before_validation :remove_whitespaces
 
   belongs_to :user
+
+  def remove_whitespaces
+    self.content.strip!
+  end
 
   def delegate_create_to_backend
     AddSshKeyWorker.perform_async(self.user.username, self.title, self.content)
