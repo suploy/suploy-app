@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :ssh_keys
   has_many :apps
 
-  validates :username, uniqueness: {
+  validates :username, presence: true, uniqueness: {
     case_sensitive: false
   }
 
