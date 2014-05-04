@@ -16,5 +16,9 @@
               li= message
       .form-group
         = f.text_field :name, class: 'form-control', placeholder: 'Name'
+      .checkbox
+        = label_tag :postgres do
+          = check_box_tag :postgres
+          | Provide a PostgreSQL database
       .form-group
         = f.submit 'CREATE APP', class: 'btn btn-success form-control'
