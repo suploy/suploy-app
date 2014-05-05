@@ -3,6 +3,7 @@ class App < ActiveRecord::Base
   after_destroy :delegate_destroy_to_backend
 
   belongs_to :user
+  has_many :databases
 
   validates :name, presence: true, uniqueness: true, length: { within: 0..255 },
             format: { with: /\A[a-zA-Z0-9_][a-zA-Z0-9_\-\.]*\z/,
@@ -18,5 +19,11 @@ class App < ActiveRecord::Base
 
   def repository
     "git@#{Suploy.config.host}:#{self.name}"
+  end
+
+  def ensure_pg_db
+    if self.databases.empty?
+      self.databases << Database.create
+    end
   end
 end

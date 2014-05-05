@@ -36,6 +36,9 @@ class AppsController < ApplicationController
   def create
     @app = App.new(app_params)
     @app.user = current_user
+    if params[:postgres]
+      @app.ensure_pg_db
+    end
 
     respond_to do |format|
       if @app.save
@@ -80,6 +83,6 @@ class AppsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def app_params
-      params.require(:app).permit(:name, :status)
+      params.require(:app).permit(:name, :status, :postgres)
     end
 end

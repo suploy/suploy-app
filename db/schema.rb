@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140412133814) do
+ActiveRecord::Schema.define(version: 20140504191047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20140412133814) do
   end
 
   add_index "apps", ["name"], name: "index_apps_on_name", unique: true, using: :btree
+
+  create_table "databases", force: true do |t|
+    t.string   "hostname"
+    t.integer  "port"
+    t.string   "username"
+    t.string   "password"
+    t.integer  "app_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ssh_keys", force: true do |t|
     t.string   "title"
