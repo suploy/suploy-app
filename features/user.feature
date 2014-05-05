@@ -9,18 +9,18 @@ Feature: CRUD user
   Scenario: Register using regular Sign Up form
     Given I am on the register page
     When I supply my user information
-    And I press "Sign Up"
+    And I press "Sign up"
     Then I should see "Please open the link to activate your account"
     And I receive an email with a verification link
 
   Scenario: Register using GitHub OAuth
     Given I am on the login page
-    When I click "Sign in with Github"
+    When I click "github-auth"
     Then I should see "Successfully authenticated from GitHub account. "
 
   Scenario: Register using no data
     Given I am on the register page
-		When I press "Sign Up"
+		When I press "Sign up"
     Then I should see "errors prohibited this user from being saved"
 
   Scenario Outline: Change profile information
@@ -39,7 +39,7 @@ Feature: CRUD user
   Scenario: Delete account
     Given I am logged in
     And I am on my profile page
-    When I press "Delete Account"
+    When I press "Cancel my account"
     And confirm to delete
     Then I am logged off
     And can't login

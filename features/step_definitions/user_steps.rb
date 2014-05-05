@@ -2,14 +2,14 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 Given /a test user exists/ do
-	user = User.new({name: 'test', email: 'test@test.com', password: 'test', password_confirmation: 'test'})
+	user = User.new({username: 'test', email: 'test@test.com', password: 'test', password_confirmation: 'test'})
 	user.confirmation_sent_at = Time.now
 	user.skip_confirmation!
 	user.save!(:validate => false)
 end
 
 Given /I supply my user information/ do
-	fill_in 'user_name', with: 'testuser'
+	fill_in 'user_username', with: 'testuser'
 	fill_in 'user_email', with: 'test@example.com'
 	fill_in 'user_password', with: 'q1w2f3p4g5'
 	fill_in 'user_password_confirmation', with: 'q1w2f3p4g5'

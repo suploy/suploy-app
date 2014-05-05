@@ -24,7 +24,7 @@
             .controls
               = f.submit 'Sign in', class: 'btn btn-success', id: 'sign-in'
               - if Suploy.config.omniauth.enabled
-                = link_to omniauth_authorize_path(:user, :github), class: 'btn btn-default', style: 'margin-left: 10px;' do
+                = link_to omniauth_authorize_path(:user, :github), class: 'btn btn-default', id: 'github-auth', style: 'margin-left: 10px;' do
                   i.fa.fa-github
                   |  GitHub
 

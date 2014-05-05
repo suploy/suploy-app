@@ -5,7 +5,7 @@ Feature: Manage webapps
 
   Scenario: List all containers
     Given I am logged in
-    When I am on the webapp list
+    When I am on the app list
     Then I see "Running containers"
 
   Scenario: Stop web app

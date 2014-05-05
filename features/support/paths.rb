@@ -11,9 +11,11 @@ module NavigationHelpers
 		when /my profile page/
 			'/users/edit'
 		when /the new ssh-key page/
-			'/users/ssh-keys/new'
+			'/profiles/ssh_keys/new'
 		when /the sshkey overview page/
-			'/users/ssh-keys'
+			'/profiles/ssh_keys'
+		when /the app list/
+			'/apps'
     else
       begin
         page_name =~ /the (.*) page/
