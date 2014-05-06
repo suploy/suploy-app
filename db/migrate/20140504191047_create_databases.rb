@@ -5,6 +5,7 @@ class CreateDatabases < ActiveRecord::Migration
       t.integer :port
       t.string :username
       t.string :password
+      t.string :type
       t.integer :app_id
 
       t.timestamps

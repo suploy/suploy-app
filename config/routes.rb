@@ -5,7 +5,11 @@ Suploy::Application.routes.draw do
   # Main App
   devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions'}
 
-  resources :apps
+  resources :apps do
+    member do
+      post 'add_pg_db'
+    end
+  end
 
   namespace :profiles do
     resources :ssh_keys, except: [:edit, :update]
@@ -32,7 +36,11 @@ Suploy::Application.routes.draw do
   end
 
   scope '/api', defaults: { format: :json } do
-    resources :apps, except: [:new, :edit]
+    resources :apps, except: [:new, :edit] do
+      member do
+        post 'add_pg_db'
+      end
+    end
     namespace :profiles do
       resources :ssh_keys, except: [:new, :edit]
     end

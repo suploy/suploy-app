@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140504191047) do
     t.integer  "port"
     t.string   "username"
     t.string   "password"
+    t.string   "type"
     t.integer  "app_id"
     t.datetime "created_at"
     t.datetime "updated_at"

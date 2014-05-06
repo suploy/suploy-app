@@ -19,3 +19,16 @@
               span.input-group-btn
                 button#copy_repo.btn.btn-default type='button' ng-click='copy'
                   | Copy
+        - if @app.database.nil?
+          tr
+            td Need a database?
+            td= button_to 'Add a PostgreSQL database', add_pg_db_app_path, class: 'btn btn-success', method: :post
+        - else
+          tr
+            td PostgreSQL
+            td
+              .input-group
+                = text_field_tag :postgres, @app.database.db_url, class: 'form-control', readonly: true
+                span.input-group-btn
+                  button#copy_pg.btn.btn-default type='button' ng-click='copy'
+                    | Copy

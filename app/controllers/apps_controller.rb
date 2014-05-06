@@ -1,7 +1,7 @@
 class AppsController < ApplicationController
   layout 'main'
 
-  before_action :set_app, only: [:show, :edit, :update, :destroy]
+  before_action :set_app, only: [:show, :edit, :update, :destroy, :add_pg_db]
 
   # GET /apps
   # GET /api/apps
@@ -51,12 +51,27 @@ class AppsController < ApplicationController
     end
   end
 
+  # POST /apps/1/add_pg_db
+  # POST /api/apps/1/add_pg_db
+  def add_pg_db
+    @app.ensure_pg_db
+    respond_to do |format|
+      if @app.save
+        format.html { redirect_to edit_app_url(@app), notice: 'PG database was successfully added.' }
+        format.json { render json: @app, status: :ok }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @app.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /apps/1
   # PATCH/PUT /api/apps/1
   def update
     respond_to do |format|
       if @app.update(app_params)
-        format.html { redirect_to @app, notice: 'App was successfully updated.' }
+        format.html { redirect_to edit_app_url(@app), notice: 'App was successfully updated.' }
         format.json { render json: @app, status: :ok }
       else
         format.html { render action: 'edit' }
