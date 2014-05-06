@@ -4,7 +4,16 @@
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
 
+ENV["RAILS_ENV"] ||= 'test'
 require 'cucumber/rails'
+require 'database_cleaner'
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
+
+if ENV["TRAVIS"]
+  require 'coveralls'
+  Coveralls.wear!
+end
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
@@ -56,3 +65,12 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:github] = {
+  :uid => '1337',
+  :provider => 'GitHub',
+  :info => {
+    :nickname => 'flower-pot',
+    :email => 'flower-pot@example.com'
+  }
+}

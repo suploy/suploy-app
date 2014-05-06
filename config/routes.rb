@@ -3,7 +3,7 @@ require 'sidekiq/web'
 Suploy::Application.routes.draw do
 
   # Main App
-  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions'}
+  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions', registrations: 'users/registrations'}
 
   resources :apps do
     member do

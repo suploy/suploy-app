@@ -25,14 +25,14 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_github_oauth2(access_token, signed_in_resource=nil)
-    data = access_token.info
+    data = access_token[:info]
     user = User.where(:email => data["email"]).first
 
     unless user
-      user = User.create( username: data["nickname"],
-                          email: data["email"],
-                          provider: access_token.provider,
-                          uid: access_token.uid,
+      user = User.create( username: data[:nickname],
+                          email: data[:email],
+                          provider: access_token[:provider],
+                          uid: access_token[:uid],
                           password: Devise.friendly_token[0,20],
                           confirmed_at: Time.now
                         )
