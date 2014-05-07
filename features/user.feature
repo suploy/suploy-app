@@ -33,8 +33,8 @@ Feature: CRUD user
 
     Examples:
       | new_password  | old_password |
-      | abc123        | password     |
-      | dudelsack     | abc123       |
+      | abc123456     | test         |
+      | dudelsack     | abc123456    |
 
   Scenario: Delete account
     Given I am logged in

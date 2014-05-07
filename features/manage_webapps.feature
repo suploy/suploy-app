@@ -3,22 +3,10 @@ Feature: Manage webapps
   As a regular user
   I want to show all apps I uploaded
 
+  Background:
+    Given a test user exists
+
   Scenario: List all containers
     Given I am logged in
     When I am on the app list
-    Then I see "Running containers"
-
-  Scenario: Stop web app
-    Given I am logged in
-    And there is at least one running app
-    When I am on the manage containers page
-    And I click "Stop webapp"
-    Then I see a "stopped webapp" notification
-
-  Scenario: Start a webapp
-    Given I am logged in
-    And there is a stopped app
-    When I am on the manage containers page
-    And I click "start webapp"
-    Then I see a "started webapp" notification
-
+    Then I should see "Manage Apps"
