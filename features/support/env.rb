@@ -74,3 +74,5 @@ OmniAuth.config.mock_auth[:github] = {
     :email => 'flower-pot@example.com'
   }
 }
+
+Suploy.config.omniauth.enabled = true
