@@ -61,6 +61,7 @@ group :development, :test do
   gem 'railroady', require: false
   gem 'coveralls', require: false
   gem 'metric_fu', require: false
+  gem 'simplecov', require: false
   gem 'cucumber-rails', require: false
   gem 'fakeweb'
   gem 'foreman'

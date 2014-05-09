@@ -450,6 +450,7 @@ DEPENDENCIES
   sdoc
   settingslogic
   sidekiq
+  simplecov
   sinatra
   slim
   slim-rails

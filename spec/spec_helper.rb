@@ -10,6 +10,11 @@ if ENV['TRAVIS']
   Coveralls.wear!
 end
 
+unless ENV['CI']
+  require 'simplecov'
+  SimpleCov.start
+end
+
 require 'sidekiq/testing'
 Sidekiq::Testing.fake!
 
