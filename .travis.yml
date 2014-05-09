@@ -16,3 +16,6 @@ before_script:
 bundler_args: ""
 script:
   - bundle exec $TASK
+notifications:
+  webhooks:
+    - http://hubot-james.herokuapp.com/hubot/travis?room=%23kreisverkehr&type=groupchat
