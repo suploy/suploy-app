@@ -61,4 +61,5 @@ Suploy currently only supports Ubuntu 14.04.
 	git submodule init
 	git submodule update
 	bundle install
+	rake db:create
 	rake db:setup
