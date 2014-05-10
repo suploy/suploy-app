@@ -1,6 +1,6 @@
 namespace :test do
   desc "run all tests"
-  task all: :test do
+  task all: :environment do
     ["rspec spec", "cucumber"].each do |cmd|
       puts "Starting to run #{cmd}..."
       system("export DISPLAY=:99.0 && bundle exec #{cmd}")
