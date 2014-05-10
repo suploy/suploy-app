@@ -2,9 +2,12 @@ namespace :env do
   desc "Reset the environment to a fresh installation"
   task reset: :environment do
     ##Cleanup Webapp
-    #Cleanup Webapp Database
+    #Cleanup Webapp PGDatabase
     Rake::Task["db:drop"].invoke
     Rake::Task["db:setup"].invoke
+
+    #Cleanup Redis
+    `redis-cli FLUSHDB`
 
     ##Cleanup Gitolite
     #Cleanup SSH Keys
