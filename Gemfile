@@ -51,9 +51,7 @@ gem 'sshkey'
 gem 'oyster'
 
 # SCLI
-gem 'docker-api', :require => 'docker'
-gem 'gitolite'
-
+gem 'suploy-scli'
 
 # Dev & Test
 group :development, :test do

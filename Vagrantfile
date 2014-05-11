@@ -17,4 +17,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end 
 
    config.vm.synced_folder "./", "/home/vagrant/suploy"
+   config.vm.synced_folder "../suploy-scli", "/home/vagrant/suploy-scli"
 end
