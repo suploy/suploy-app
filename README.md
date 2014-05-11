@@ -39,6 +39,7 @@ Suploy currently only supports Ubuntu 14.04.
 	cd /home/git/buildstep
 	sudo make build
 	sudo gpasswd -a git docker
+	sudo gpasswd -a vagrant git
 	sudo service docker.io restart
 
 ### Suploy Webapp
