@@ -48,10 +48,10 @@ gem 'omniauth-github'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'sshkey'
-gem 'oyster'
 
 # SCLI
 gem 'suploy-scli'
+gem 'docker-api', require: 'docker'
 
 # Dev & Test
 group :development, :test do

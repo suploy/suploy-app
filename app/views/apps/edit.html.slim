@@ -3,7 +3,7 @@
     .panel-title
       = link_to apps_path do
         i.fa.fa-arrow-left
-      = ' ' + @app.name
+      = " #{@app.name}: #{@app.running_state}"
   .panel-body
     table.table
         tr
