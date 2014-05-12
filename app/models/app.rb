@@ -20,19 +20,15 @@ class App < ActiveRecord::Base
   def repository
     "git@#{Suploy.config.host}:#{self.name}"
   end
-  
-  def running?
-    Docker::Container.get(self.name).json["State"]["Running"]
-  rescue Docker::Error::NotFoundError
-    false
-  end
 
-  def running_state
-    if running?
+  def status
+    if Docker::Container.get(self.name).json["State"]["Running"]
       "Running"
     else
       "Not running"
     end
+  rescue
+    "Not deployed yet"
   end
 
   def ensure_pg_db
