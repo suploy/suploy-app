@@ -13,9 +13,9 @@
         td Repository
         td 
           .input-group
-            = text_field_tag :repository, @app.repository, class: 'form-control', readonly: true
+            = text_field_tag :repository, @app.repository, class: 'form-control copy_data', readonly: true
             span.input-group-btn
-              button#copy_repo.btn.btn-default type='button' ng-click='copy'
+              button.copy_button.btn.btn-default type='button' ng-click='copy'
                 | Copy
       - if @app.database.nil?
         tr
@@ -26,7 +26,7 @@
           td PostgreSQL
           td
             .input-group
-              = text_field_tag :postgres, @app.database.db_url, class: 'form-control', readonly: true
+              = text_field_tag :postgres, @app.database.db_url, class: 'form-control copy_data', readonly: true
               span.input-group-btn
-                button#copy_pg.btn.btn-default type='button' ng-click='copy'
+                button.copy_button.btn.btn-default type='button' ng-click='copy'
                   | Copy
