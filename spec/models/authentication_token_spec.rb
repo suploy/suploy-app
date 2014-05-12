@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe AuthenticationToken do
   before do
-    $redis.flushdb
+    Redis.current.flushdb
   end
 
   after do
-    $redis.flushdb
+    Redis.current.flushdb
   end
 
   it "is valid if the token is created without params" do

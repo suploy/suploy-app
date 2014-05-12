@@ -4,4 +4,4 @@ else
   redis = Redis.new
 end
 
-$redis = Redis::Namespace.new("suploy", redis: redis)
+Redis.current = Redis::Namespace.new("suploy", redis: redis)

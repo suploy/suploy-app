@@ -87,7 +87,7 @@ class AuthenticationToken
   end
 
   def redis
-    $redis
+    Redis.current
   end
 
 end

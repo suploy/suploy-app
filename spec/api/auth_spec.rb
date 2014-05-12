@@ -5,11 +5,11 @@ describe 'API auth' do
 
   before do
     @user = FactoryGirl.create(:user)
-    $redis.flushdb
+    Redis.current.flushdb
   end
 
   after do
-    $redis.flushdb
+    Redis.current.flushdb
   end
 
   describe "POST /api/session" do
@@ -21,8 +21,8 @@ describe 'API auth' do
 
       auth_token = json_response['user_token']
 
-      $redis.exists(user_id_key(auth_token)).should be_true
-      $redis.exists(last_seen_key(auth_token)).should be_true
+      Redis.current.exists(user_id_key(auth_token)).should be_true
+      Redis.current.exists(last_seen_key(auth_token)).should be_true
     end
 
     it "should return invalid email or password for invalid email or password" do
@@ -47,16 +47,16 @@ describe 'API auth' do
       auth_token = json_response['user_token']
       delete '/api/session', nil, {'HTTP_AUTHORIZATION' => auth_token}
       response.status.should == 204
-      $redis.exists(user_id_key(auth_token)).should be_false
-      $redis.exists(last_seen_key(auth_token)).should be_false
+      Redis.current.exists(user_id_key(auth_token)).should be_false
+      Redis.current.exists(last_seen_key(auth_token)).should be_false
     end
 
     it "should return untauthenticated when deleting a session with a non existent token" do
       auth_token = MicroToken.generate(128)
       delete '/api/session', nil, {'HTTP_AUTHORIZATION' => auth_token}
       response.status.should == 401
-      $redis.exists(user_id_key(auth_token)).should be_false
-      $redis.exists(last_seen_key(auth_token)).should be_false
+      Redis.current.exists(user_id_key(auth_token)).should be_false
+      Redis.current.exists(last_seen_key(auth_token)).should be_false
     end
   end
 
