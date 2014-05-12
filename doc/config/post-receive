@@ -1,8 +1,9 @@
 #!/bin/bash
 port=5000
 name=`pwd | awk -F/ '{print $NF}' | sed 's/....$//'`
-git archive --format=tar master | ~/buildstep/buildstep $name
-container=$(docker run -p $port -d --name $name $name /bin/bash -c "/start web")
+image_name="$name"image
+git archive --format=tar master | ~/buildstep/buildstep $image_name
+container=$(docker run -p $port -d --name $name $image_name /bin/bash -c "/start web")
 public_port=$(docker port $container $port)
 
 echo "Find your app at: $(hostname):$public_port"
