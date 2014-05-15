@@ -1,7 +1,7 @@
 class PgDatabase < Database
 
   def delegate_create_to_backend
-    db_info = Scli.database_create
+    db_info = Scli::Database.database_create
     self.hostname = db_info[:ip]
     self.save!
   end

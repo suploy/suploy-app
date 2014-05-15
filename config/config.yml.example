@@ -4,6 +4,11 @@ defaults: &defaults
   host: 'example.com'
   email: 'change-me@example.com'
 
+  #suploy
+  suploy:
+    gitolite_dir: '/home/vagrant/gitolite-admin'
+    repo_dir: '/home/git/repositories'
+
   #smtp settings
   smtp:
     enabled: false
