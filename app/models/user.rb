@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   }
 
   attr_accessor :login
+  attr_accessor :token_authed
+  alias :token_authed? :token_authed
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
