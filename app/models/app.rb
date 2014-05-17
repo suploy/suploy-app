@@ -22,13 +22,21 @@ class App < ActiveRecord::Base
   end
 
   def status
-    if Docker::Container.get(self.name).json["State"]["Running"]
-      "Running"
+    if Scli::Container.new.view_container(name)["State"]["Running"]
+      :running
     else
-      "Not running"
+      :not_running
     end
   rescue
-    "Not deployed yet"
+    :not_deployed
+  end
+
+  def start
+    Scli::Container.new.start_container name
+  end
+
+  def stop
+    Scli::Container.new.stop_container name
   end
 
   def ensure_pg_db

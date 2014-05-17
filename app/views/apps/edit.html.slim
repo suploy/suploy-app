@@ -8,7 +8,11 @@
     table.table
       tr
         td Status
-        td= @app.status
+        td
+          = @app.status
+          = link_to "Start", start_app_path(@app), class: 'btn btn-success', method: :patch
+          = link_to "Stop", stop_app_path(@app), class: 'btn btn-warning', method: :patch
+          = link_to "Restart", restart_app_path(@app), class: 'btn btn-default', method: :patch
       tr
         td Repository
         td 

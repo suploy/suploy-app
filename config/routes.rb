@@ -8,6 +8,12 @@ Suploy::Application.routes.draw do
   resources :apps do
     member do
       post 'add_pg_db'
+      put 'start'
+      patch 'start'
+      put 'stop'
+      patch 'stop'
+      put 'restart'
+      patch 'restart'
     end
   end
 

@@ -1,7 +1,7 @@
 class AppsController < ApplicationController
   layout 'main'
 
-  before_action :set_app, only: [:show, :edit, :update, :destroy, :add_pg_db]
+  before_action :set_app, only: [:show, :edit, :update, :destroy, :start, :stop, :restart, :add_pg_db]
 
   # GET /apps
   # GET /api/apps
@@ -88,6 +88,24 @@ class AppsController < ApplicationController
       format.html { redirect_to apps_url, notice: 'App was succussfully removed.' }
       format.json { head :no_content }
     end
+  end
+
+  # PATCH/PUT /api/apps/1/start
+  def start
+    @app.start
+    render nothing: true, status: :ok
+  end
+
+  # PATCH/PUT /api/apps/1/stop
+  def stop
+    @app.stop
+    render nothing: true, status: :ok
+  end
+
+  # PATCH/PUT /api/apps/1/restart
+  def restart
+    @app.restart
+    render nothing: true, status: :ok
   end
 
   private
