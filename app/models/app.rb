@@ -36,4 +36,12 @@ class App < ActiveRecord::Base
       self.database = PgDatabase.create
     end
   end
+
+  def to_param
+    name
+  end
+
+  def self.find(input)
+    find_by_name input
+  end
 end
