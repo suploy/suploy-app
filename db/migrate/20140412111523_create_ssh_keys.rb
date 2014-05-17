@@ -8,5 +8,7 @@ class CreateSshKeys < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :ssh_keys, :fingerprint, :unique => true
   end
 end

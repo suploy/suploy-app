@@ -49,7 +49,7 @@ class Profiles::SshKeysController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ssh_key
-      @ssh_key = SshKey.find(params[:id])
+      @ssh_key = SshKey.find(params[:id], current_user)
     end
 
     def set_ssh_keys
