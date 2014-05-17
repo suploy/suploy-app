@@ -1,3 +1,3 @@
 class SshKeySerializer < ActiveModel::Serializer
-  attributes :id, :title, :fingerprint, :content, :user_id
+  attributes :title, :fingerprint, :content
 end

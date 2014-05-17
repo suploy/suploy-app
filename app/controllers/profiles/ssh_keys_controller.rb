@@ -14,6 +14,13 @@ class Profiles::SshKeysController < ApplicationController
     end
   end
 
+  # GET /api/ssh_keys
+  def show
+    respond_to do |format|
+      format.json { render json: @ssh_key }
+    end
+  end
+
   # GET /ssh_keys/new
   def new
     @ssh_key = SshKey.new
