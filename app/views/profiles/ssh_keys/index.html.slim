@@ -2,7 +2,8 @@
   .panel-heading
     .panel-title
       | SSH-Key
-      = link_to 'Add SSH Key', new_profiles_ssh_key_path, class: "btn btn-primary pull-right"
+      .pull-right
+        = link_to 'Add SSH Key', new_profiles_ssh_key_path, class: "btn btn-primary pull-right"
   .panel-body
     - if @ssh_keys.size > 0
       table.table.table-striped

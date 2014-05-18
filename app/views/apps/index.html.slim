@@ -2,7 +2,8 @@
   .panel-heading
     .panel-title
       | Manage Apps
-      = link_to 'Create App', new_app_path, class: 'btn btn-primary pull-right'
+      .pull-right
+        = link_to 'Create App', new_app_path, class: 'btn btn-primary pull-right'
   .panel-body
     - if @apps.size > 0
       table.table.table-striped

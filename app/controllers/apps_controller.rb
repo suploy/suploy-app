@@ -85,7 +85,7 @@ class AppsController < ApplicationController
   def destroy
     @app.destroy
     respond_to do |format|
-      format.html { redirect_to apps_url, notice: 'App was succussfully removed.' }
+      format.html { redirect_to edit_app_url(@app), notice: 'App was succussfully removed.' }
       format.json { head :no_content }
     end
   end
@@ -93,19 +93,28 @@ class AppsController < ApplicationController
   # PATCH/PUT /api/apps/1/start
   def start
     @app.start
-    render nothing: true, status: :ok
+    respond_to do |format|
+      format.html { redirect_to edit_app_url(@app), notice: 'App started.' }
+      format.json { render nothing: true, status: :ok }
+    end
   end
 
   # PATCH/PUT /api/apps/1/stop
   def stop
     @app.stop
-    render nothing: true, status: :ok
+    respond_to do |format|
+      format.html { redirect_to edit_app_url(@app), notice: 'App stopped.' }
+      format.json { render nothing: true, status: :ok }
+    end
   end
 
   # PATCH/PUT /api/apps/1/restart
   def restart
     @app.restart
-    render nothing: true, status: :ok
+    respond_to do |format|
+      format.html { redirect_to apps_url, notice: 'App restarted' }
+      format.json { render nothing: true, status: :ok }
+    end
   end
 
   private
