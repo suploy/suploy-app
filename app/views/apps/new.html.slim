@@ -3,7 +3,7 @@
     .panel-title
       = link_to apps_path do
         i.fa.fa-arrow-left
-      |  Create App
+      = " #{t 'app.create' }"
   .panel-body
     = form_for @app do |f|
       - if @app.errors.any?
@@ -15,10 +15,10 @@
             - @app.errors.full_messages.each do |message|
               li= message
       .form-group
-        = f.text_field :name, class: 'form-control', placeholder: 'Name'
+        = f.text_field :name, class: 'form-control', placeholder: t('name')
       .checkbox
         = label_tag :postgres do
           = check_box_tag :postgres
-          | Provide a PostgreSQL database
+          = t 'app.provide_psql'
       .form-group
-        = f.submit 'CREATE APP', class: 'btn btn-success form-control'
+        = f.submit t('app.create').upcase, class: 'btn btn-success form-control'

@@ -7,28 +7,28 @@
       .pull-right
         - if @app.status == :running
           .btn-group
-            = link_to "Stop", stop_app_path(@app), class: 'btn btn-warning', method: :patch
-            = link_to "Restart", restart_app_path(@app), class: 'btn btn-default', method: :patch
+            = link_to t('app.stop'), stop_app_path(@app), class: 'btn btn-warning', method: :patch
+            = link_to t('app.restart'), restart_app_path(@app), class: 'btn btn-default', method: :patch
         - else @app.status == :not_running
-          = link_to "Start", start_app_path(@app), class: 'btn btn-success', method: :patch
+          = link_to t('app.start'), start_app_path(@app), class: 'btn btn-success', method: :patch
   .panel-body
     table.table
       tr
-        td Status
+        td= t 'status'
         td
-          = @app.status
+          = t @app.status
       tr
-        td Repository
+        td= t 'repository'
         td 
           .input-group
             = text_field_tag :repository, @app.repository, class: 'form-control copy_data', readonly: true
             span.input-group-btn
               button.copy_button.btn.btn-default type='button' ng-click='copy'
-                | Copy
+                = t 'copy'
       - if @app.database.nil?
         tr
-          td Need a database?
-          td= button_to 'Add a PostgreSQL database', add_pg_db_app_path, class: 'btn btn-success', method: :post
+          td= t 'app.need_a_db'
+          td= button_to t('app.add_psql_db'), add_pg_db_app_path, class: 'btn btn-success', method: :post
       - else
         tr
           td PostgreSQL
@@ -37,4 +37,4 @@
               = text_field_tag :postgres, @app.database.db_url, class: 'form-control copy_data', readonly: true
               span.input-group-btn
                 button.copy_button.btn.btn-default type='button' ng-click='copy'
-                  | Copy
+                  = t 'copy'

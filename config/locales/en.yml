@@ -20,4 +20,32 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  running: "Running"
+  not_running: "Not running"
+  not_deployed: "Not deployed"
+  name: "Name"
+  status: "Status"
+  sure: "Are you sure?"
+  repository: 'Repository'
+  title: 'Title'
+  copy: 'Copy'
+  back: 'Back'
+  delete: 'Delete'
+  ssh_key:
+    manage: "Manage SSH Keys"
+    add: "Add SSH Key"
+    none: "You have not yet added an SSH Key."
+    go_ahead_and: "Go ahead and"
+    none_create_new: "create one!"
+    pub_content: "Public key content"
+  app:
+    manage: "Manage Apps"
+    create: "Create App"
+    none: "You have not yet created an app."
+    none_create_new: "Create a new app!"
+    provide_psql: "Provide a PostgreSQL database"
+    need_a_db: "Need a database?"
+    add_psql_db: "Add a PostgreSQL database"
+    start: "Start"
+    stop: "Stop"
+    restart: "Restart"

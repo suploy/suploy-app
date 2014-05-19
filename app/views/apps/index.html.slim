@@ -1,25 +1,25 @@
 .panel.panel-default
   .panel-heading
     .panel-title
-      | Manage Apps
+      = t 'app.manage'
       .pull-right
-        = link_to 'Create App', new_app_path, class: 'btn btn-primary pull-right'
+        = link_to t('app.create'), new_app_path, class: 'btn btn-primary pull-right'
   .panel-body
     - if @apps.size > 0
       table.table.table-striped
         thead
-          th Name
-          th Status
+          th= t 'name'
+          th= t 'status'
           th
         tbody
           - @apps.each do |app|
             tr
               td= link_to app.name, edit_app_path(app)
-              td= app.status
+              td= t app.status
                 i.glyphicon.glyphicon-edit
-              td.text-right= link_to app, method: :delete, data: { confirm: 'Are you sure?' } do
+              td.text-right= link_to app, method: :delete, data: { confirm: t('sure') } do
                 i.glyphicon.glyphicon-remove.text-danger
     - else
-      h4.text-center You have not yet created an app.
+      h4.text-center= t 'app.none'
       h4.text-center
-        = link_to 'Create a new app!', new_app_path
+        = link_to t('app.none_create_new'), new_app_path
