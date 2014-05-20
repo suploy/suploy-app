@@ -6,7 +6,7 @@ class SshKey < ActiveRecord::Base
 
   after_create :delegate_create_to_backend
   after_destroy :delegate_destroy_to_backend
-  before_validation :set_fingerprint
+  before_validation :set_fingerprint, if: :valid_key?
   before_validation :remove_whitespaces
 
   belongs_to :user
@@ -24,20 +24,20 @@ class SshKey < ActiveRecord::Base
   end
 
   def set_fingerprint
-    self.fingerprint = SSHKey.fingerprint self.content
+    self.fingerprint = SSHKey.fingerprint(content)
   end
 
   def validate_key
     if !valid_key?
       errors.add(:key, "is not a valid ssh public key")
     end
-    if SshKey.find_by_fingerprint(self.fingerprint)
+    if fingerprint && SshKey.find_by_fingerprint(fingerprint)
       errors.add(:key, "has already been added")
     end
   end
 
   def valid_key?
-    SSHKey.valid_ssh_public_key? self.content
+    content && SSHKey.valid_ssh_public_key?(content)
   end
 
   def to_param

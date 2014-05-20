@@ -12,7 +12,7 @@ Feature: ssh-key
     And I am on the new ssh-key page
     When I provide a title
     And I provide a valid ssh-key
-    And I press "CREATE SSH KEY"
+    And I press "ADD SSH KEY"
     Then I should see "SSH Key was successfully created."
     And I should see "title"
     And I should see "df:8f:35:f8:e7:84:c9:c3:e4:5f:22:27:a9:44:e0:a4"
@@ -21,20 +21,20 @@ Feature: ssh-key
 		Given I am logged in
     And I am on the new ssh-key page
     When I provide a valid ssh-key
-    And I press "CREATE SSH KEY"
+    And I press "ADD SSH KEY"
     Then I should see "error"
 
   Scenario: No ssh-key provided
 		Given I am logged in
     And I am on the new ssh-key page
     When I provide a title
-    And I press "CREATE SSH KEY"
+    And I press "ADD SSH KEY"
     Then I should see "error"
 
   Scenario: Whether title nor key have been provided
 		Given I am logged in
     And I am on the new ssh-key page
-    When I press "CREATE SSH KEY"
+    When I press "ADD SSH KEY"
     Then I should see "error"
 
   Scenario: Remove ssh-key
