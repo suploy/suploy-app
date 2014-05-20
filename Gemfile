@@ -50,8 +50,7 @@ gem 'kaminari-bootstrap'
 gem 'sshkey'
 
 # SCLI
-gem 'suploy-scli'
-gem 'docker-api', require: 'docker'
+gem 'suploy-scli', git: 'https://github.com/suploy/suploy-scli.git'
 
 # Dev & Test
 group :development, :test do
