@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :token_authenticate_user!
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  skip_before_action :verify_authenticity_token, if: :valid_token_auth?
+  skip_before_action :verify_authenticity_token, if: :token_auth?
   #rescue_from CanCan::AccessDenied, with: :permission_denied
 
   private
@@ -39,6 +39,10 @@ class ApplicationController < ActionController::Base
 
   def current_session_token
     @current_session_token ||= AuthenticationToken.new(authorization_header)
+  end
+
+  def token_auth?
+    !authorization_header.nil?
   end
 
   def authorization_header
