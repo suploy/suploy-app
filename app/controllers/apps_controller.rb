@@ -9,7 +9,7 @@ class AppsController < ApplicationController
     @apps = current_user.apps
     respond_to do |format|
       format.html
-      format.json { render json: {apps: @apps, meta: {total:App.all.count}} }
+      format.json { render json: @apps }
     end
   end
 
