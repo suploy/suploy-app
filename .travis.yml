@@ -9,6 +9,9 @@ rvm:
   - 2.1.1
 services:
   - redis-server
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq libicu-dev
 before_script:
   - cp config/config.yml.travis config/config.yml
   - psql -c "CREATE USER suploy WITH PASSWORD 'password1' CREATEDB;" -U postgres
