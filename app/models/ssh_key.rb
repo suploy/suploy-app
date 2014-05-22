@@ -49,5 +49,6 @@ class SshKey < ActiveRecord::Base
     if ssh_key.nil?
       raise ActiveRecord::RecordNotFound
     end
+    ssh_key
   end
 end

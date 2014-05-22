@@ -54,5 +54,6 @@ class App < ActiveRecord::Base
     if app.nil?
       raise ActiveRecord::RecordNotFound
     end
+    app
   end
 end
