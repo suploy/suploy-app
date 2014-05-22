@@ -37,7 +37,7 @@ Suploy::Application.routes.draw do
 
   # API
   namespace :api, defaults: { format: :json } do
-    get '/users/profile/me', to: 'profiles#me'
+    get '/profiles/me', to: 'profiles#me'
     resource :session, only: [:create, :destroy]
   end
 
