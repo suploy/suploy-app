@@ -50,6 +50,9 @@ class App < ActiveRecord::Base
   end
 
   def self.find(input)
-    find_by_name input
+    app = find_by_name(input)
+    if app.nil?
+      raise ActiveRecord::RecordNotFound
+    end
   end
 end

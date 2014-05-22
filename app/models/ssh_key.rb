@@ -45,6 +45,9 @@ class SshKey < ActiveRecord::Base
   end
 
   def self.find(title, user)
-    user.ssh_keys.where(title: title).first
+    ssh_key = user.ssh_keys.where(title: title).first
+    if ssh_key.nil?
+      raise ActiveRecord::RecordNotFound
+    end
   end
 end
