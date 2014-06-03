@@ -34,7 +34,7 @@
           td PostgreSQL
           td
             .input-group
-              = text_field_tag :postgres, @app.database.db_url, class: 'form-control copy_data', readonly: true
+              = text_field_tag :postgres, @app.database.connection_url, class: 'form-control copy_data', readonly: true
               span.input-group-btn
                 button.copy_button.btn.btn-default type='button' ng-click='copy'
                   = t 'copy'

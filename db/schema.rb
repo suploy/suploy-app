@@ -27,10 +27,9 @@ ActiveRecord::Schema.define(version: 20140504191047) do
   add_index "apps", ["name"], name: "index_apps_on_name", unique: true, using: :btree
 
   create_table "databases", force: true do |t|
-    t.string   "hostname"
-    t.integer  "port"
-    t.string   "username"
-    t.string   "password"
+    t.string   "ip"
+    t.string   "container_id"
+    t.string   "connection_url"
     t.string   "type"
     t.integer  "app_id"
     t.datetime "created_at"

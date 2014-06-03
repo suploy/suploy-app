@@ -38,6 +38,6 @@ namespace :env do
     `sudo docker rm $(sudo docker ps -a -q)`
 
     #Remove all images
-    `sudo docker rmi $(sudo docker images | grep -Ev "progrium/buildstep" | grep -Ev "IMAGE ID" | awk '{ print $3 }')`
+    `sudo docker rmi $(sudo docker images | grep -Ev "progrium/buildstep" | grep -Ev "IMAGE ID" | grep -Ev "zumbrunnen/postgresql" | awk '{ print $3 }')`
   end
 end

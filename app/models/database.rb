@@ -10,8 +10,4 @@ class Database < ActiveRecord::Base
   def delegate_destroy_to_backend
 
   end
-
-  def db_url
-    "default"
-  end
 end

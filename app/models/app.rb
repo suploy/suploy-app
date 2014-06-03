@@ -17,6 +17,10 @@ class App < ActiveRecord::Base
     RemoveRepositoryWorker.perform_async(self.name)
   end
 
+  def recreate_with_db(db_container_name)
+    RecreateWithDbWorker.perform_async(self.name, db_container_name)
+  end
+
   def repository
     "git@#{Suploy.config.host}:#{self.name}"
   end
@@ -41,7 +45,10 @@ class App < ActiveRecord::Base
 
   def ensure_pg_db
     if self.database.nil?
-      self.database = PgDatabase.create
+      db = PgDatabase.new
+      db.app = self
+      db.save!
+      self.database = db
     end
   end
 

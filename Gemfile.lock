@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/suploy/suploy-scli.git
-  revision: baffb16d88dc30dbc316cc716b817e040ca6de51
+  revision: 8200a0f93e99481634d52f53acdc5c27e28ab22d
   specs:
     suploy-scli (0.0.1)
       docker-api
@@ -117,14 +117,14 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.3)
-    docker-api (1.10.10)
+    docker-api (1.11.0)
       archive-tar-minitar
-      excon (>= 0.28)
+      excon (>= 0.34.0)
       json
     dotenv (0.7.0)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    excon (0.33.0)
+    excon (0.34.0)
     execjs (2.0.2)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
