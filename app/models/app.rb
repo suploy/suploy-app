@@ -4,6 +4,7 @@ class App < ActiveRecord::Base
 
   belongs_to :user
   has_one :database
+  has_many :envs
 
   validates :name, presence: true, uniqueness: true, length: { within: 0..255 },
             format: { with: /\A[a-zA-Z0-9_][a-zA-Z0-9_\-\.]*\z/,

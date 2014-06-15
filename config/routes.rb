@@ -15,6 +15,7 @@ Suploy::Application.routes.draw do
       put 'restart'
       patch 'restart'
     end
+    resources :envs
   end
 
   namespace :profiles do

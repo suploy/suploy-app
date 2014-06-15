@@ -1,0 +1,23 @@
+h1 Listing envs
+
+table
+  thead
+    tr
+      th Name
+      th Value
+      th
+      th
+      th
+
+  tbody
+    - @envs.each do |env|
+      tr
+        td = env.name
+        td = env.value
+        td = link_to 'Show', env
+        td = link_to 'Edit', edit_env_path(env)
+        td = link_to 'Destroy', env, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Env', new_env_path
