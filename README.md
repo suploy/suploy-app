@@ -14,15 +14,15 @@ Suploy currently only supports Ubuntu 14.04.
 
 ### Setup user
 
-	ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
-	git config --global user.name "suploy"
-	git config --global user.email "suploy@suploy.com"
+	sudo -u git -H ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+	sudo -u git -H git config --global user.name "suploy"
+	sudo -u git -H git config --global user.email "suploy@suploy.com"
 
 ### Gitolite
 
 	sudo -u git -H mkdir /home/git/bin
 	sudo -u git -H mkdir /home/git/.ssh
-	sudo cp /home/vagrant/.ssh/id_rsa.pub /home/git
+	sudo cp /home/git/.ssh/id_rsa.pub /home/git
 	sudo chmod 0755 /home/git/id_rsa.pub
 	sudo -u git -H git clone https://github.com/sitaramc/gitolite.git /home/git/gitolite
 	sudo -u git -H /home/git/gitolite/install -to /home/git/bin
@@ -33,7 +33,7 @@ Suploy currently only supports Ubuntu 14.04.
 ### Buildstep
 
 	sudo apt-get update
-	sudo apt-get install -y -q docker.io
+	sudo apt-get install -y -q docker.io build-essential
 	sudo ln -s /usr/bin/docker.io /usr/bin/docker
 	sudo -u git -H git clone https://github.com/progrium/buildstep.git /home/git/buildstep
 	cd /home/git/buildstep
