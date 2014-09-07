@@ -1,3 +1,5 @@
+This project is no longer maintained/developed by the core team. If you would like to continue development, contact us.
+
 Installation
 ------------
 
